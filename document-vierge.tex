@@ -1,0 +1,202 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% En-tête classique
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\documentclass[10pt,a4paper]{article}%           autres choix : report, book
+\documentclass[11pt,a4paper]{report}%           autres choix : report, book
+
+\usepackage[utf8]{inputenc}%       encodage du fichier source
+%\usepackage[T1]{fontenc}%          gestion des accents (pour les pdf)
+\usepackage[frenchb]{babel}%        rajouter éventuellement english, greek, etc.
+%\usepackage[english]{babel}%        rajouter éventuellement english, greek, etc.
+\usepackage{textcomp}%             caractères additionnels
+\usepackage{mathtools,mathtext}
+\usepackage{amsmath,amssymb,amsopn,amsthm}%      pour les maths
+\usepackage{lmodern}%              remplacer éventuellement par txfonts, fourier, etc.
+\usepackage[a4paper]{geometry}%    taille correcte du papier
+\usepackage{graphicx}%             pour inclure des images
+\usepackage{xcolor}%               pour gérer les couleurs
+\usepackage{microtype}%            améliorations typographiques
+
+\usepackage{hyperref}%             gestion des hyperliens
+\hypersetup{pdfstartview=XYZ}%     zoom par défaut
+
+
+
+
+\title{\textcolor{blue}{\textbf{Le calcul des variations et ses applications}}}
+\author{Mesnikovych Olena}
+\date{08/05/2018}
+
+
+\begin{document}
+
+\begin{figure}
+	
+	\includegraphics[width=4cm]{logo_univ}
+	
+\end{figure}
+
+
+\maketitle
+
+% \begin{abstract}
+
+% \end{abstract}
+
+\tableofcontents
+
+	\section{Introduction}
+	
+%	Le sujet de mon travail est consacré au calcul des variations et à ses applications. Nous considérons la théorie fondamentale qui permet de résoudre les problèmes du maximum et du minimum, considérons les principaux problèmes qui ont directement influencé l'émergence d'une branche mathématique comme le calcul des variations et accordons une attention particulière aux bulles de savon, y compris le problème des trois villes. Nous décrirons également l'algorithme de construction d'une grille de Steiner pour quatre points ou plus.
+	
+	
+	Tout au long de l'histoire de son existence, une personne est engagée dans l'optimisation, c'est-à-dire qu'elle trouve la valeur minimale ou maximale d'une certaine valeur: la zone du terrain, le profit (maximum), l'énergie, les coûts en espèces, la chemin (minimum). Dans certains problèmes de ce type, pour résoudre le problème d'optimisation, il suffit d'étudier un extremum pour une fonction donnée. On sait qu'au point x0, où la fonction lisse a un extremum, sa dérivée s'annule.
+	
+	Avec les problèmes dans lesquels il est nécessaire de déterminer la valeur maximale ou minimale de certaines fonctions y = f (x), en mathématiques, pour modéliser divers problèmes, il est nécessaire de déterminer les valeurs maximales et minimales d'objets mathématiques plus complexes, qui sont appelées fonctionnelles.
+	
+	Une fonctionnelle est un mappage d'un ensemble de fonctions X dans un ensemble de nombres réels R, $ J: X\to R$, et la signification de ce concept est que chaque fonction $ f (x)$ dans X est associée à un nombre $J [f]$ par une règle, par exemple
+	
+	où $ f (x)$ est une fonction continue définie sur l'intervalle [0, 1].
+	
+	
+	Le calcul des variations développe des méthodes permettant de trouver les valeurs maximum et minimum des fonctionnelles. Il permet d'optimiser des quantités physique (comme le temps, la surface ou la distence). Il trouve des applications dans des domaines aussi variés que l'aéronautique, la conception d'équipements sportifs performants, la résistance des structues, l'optimisation des formes....
+	
+	Dans le cadre des mathématiques, le calcul des variations a commencé à se développer à partir de la fin du XVII siècle et s'est transformé en discipline mathématique indépendante après les travaux fondamentaux d'Euler (1707-1783), qui peut être considéré comme le père du calcul des variations.
+	
+	La formation du calcul des variations a été grandement influencée par les problèmes mathématiques suivants:
+%	 \begin{enumerate}
+%	 	
+%	 	\item Le problème de brachistochrone (la courbe d'une descente rapide). Au XVII siècle, Jean Bernoulli lance un concours qui occupera les plus grands esprits de l'époque. Il fait insérer le problème suivant dans Acta Editorum de Leipzig: "Deux points Q et B étant donnés dans un plan vertical, déterminer la courbe AMB le long de laquelle un mobile M, abandonné en A, descend sous l’action de sa propre pesanteur et parvient à l'autre point B dans le moins de temps possible." Le problème prend le nom de brachistochrone, qui veut dire, traduit textuellement, « temps le plus court ». On sait qu'au moins cinq math ́ematiciens proposèrent une solution : Leibniz, L’Hospital, Newton, Jean Bernoulli 	lui-meme ainsi que son frère Jacques
+%	 	
+%	 	Il est montré que la ligne de la rampe la plus rapide ne sera pas une ligne droite reliant les points A et B, bien qu'elle soit la plus courte distance entre eux. Il s'est avéré que la ligne de la rampe la plus rapide est une cycloïde dont l'équation a la forme
+%	 	
+%	 	\begin{equation*}
+%	 	\begin{cases}
+%	 	x=a(\theta-sin\theta)
+%	 	\\
+%	 	y=a(1-cos\theta)
+%	 	\end{cases}
+%	 	\end{equation*}
+%	 	
+%	 	\item Le problème des lignes géodésiques. L'essence du problème consiste à déterminer la ligne de la plus petite longueur reliant deux points donnés d'une surface f (x, y, z) = 0. De telles lignes sont appelées géodésiques. Ainsi, par exemple, pour une sphère géodésique fait partie d'un arc de cercle de grand rayon.
+%	 	
+%	 	\item Problème isopérimétrique. Trouver une ligne fermée d'une longueur donnée l, qui limite la surface maximale de S.
+%	 	
+%	 	Dans ce problème, il est nécessaire de déterminer l'extremum de la fonctionnelle S s'il existe une condition supplémentaire qui dit que la longueur de la courbe l doit être constante, c'est-à-dire que la fonctionnelle reste constante. Des problèmes de ce genre sont appelés isopérimétrique.
+%	 	
+%	 \end{enumerate}
+	
+	\section{Partie théorique}
+	 Considerons le problème fondamental du calcul des variations et considérons la théorie fondamentale qui permet de résoudre  ce problème.
+	 
+	 Etant donné une fonction $f=f(x,y,y')$, trouves les fonctions $y(x)$ qui mènent à des extrema de l'intégrale \[I=\int_{x_1}^{x_2} f(x,y,y')dx\] sous les conditions aux limites 
+	 \begin{equation*}
+	 \begin{cases}
+	 y(x_1)=y_1
+	 \\
+	 y(x_2)=y_2
+	 \end{cases}
+	 \end{equation*}
+	 
+	 Comment faire pour savoir quelles fonctions $y(x)$ minimisent ou maximisent l'intégrale I? C'est à cette question que répond l'équation d'Euler-Lagrange.
+	 
+	 \subsection{L'équation d'Euler-Lagrange}
+	  \textbf{Théorème 1.1} Une condition nécessaire pour que l'intégrale
+	   \[I=\int_{x_1}^{x_2} f(x,y,y')dx\] atteigne un extremum sous les conditions aux limites 
+	   \begin{equation*}
+	   \begin{cases}
+	   y(x_1)=y_1
+	   \\
+	   y(x_2)=y_2
+	   \end{cases}
+	   \end{equation*}
+	    est que la fonction $y=y(x)$ satisfasse à l'équation d'Euler-Lagrange
+	    \[\frac{\partial f}{\partial y}- \frac{d}{dx}(\frac{\partial f}{\partial y'})=0\]
+
+
+		Dans certains cas, nous pourrons utiliser des formes simplifiées de l'équation d'Euler-Lagrange, qui nous permettront de trouver la solution plus rapidement et plus facilement. Un de ces «raccourcis» se nomme l'identité de Beltrami.	 
+		
+		\textbf{Théorème 1.2} Dans les cas où la fonction $f(x,y,y')$ à l'intérieur de l'intégrale (1) est explicitement indéoendante de x, une condition nécessaire pour que l'intégrale ait un extremum est donnée par l'identité de Beltrami, qui est une forme particulière de l'équation d'Euler-Lagrange: 
+		\[y'\frac{\partial f}{\partial y'}-f=C\]
+		où Cest une constante.
+		
+		Les équations d'Euler-Lagrange et Beltrami sont des \textit{équations différentielles} pour la fonction $y(x)$,c'est-à-dire que ce sont des équations reliant la fonction y à ses dérivées. Résoudre des équations différentielles est une des facettes les plus importantes du calcul difféentiel, qui a de multiples applications en sciences et en génie.
+		
+		Comme le processus d'optimisation d'une fonction ne dependant que d'une variable réelle, l'équation d'Euler–Lagrange donne parfois plusieurs solutions, et il faut des tests
+		supplémentaires pour savoir si celles-ci sont des minima, des maxima ou des points d'une
+		autre nature. De plus, ces extrema pourraient etre locaux plutot que globaux. Qu'est-
+		ce qu'un point critique ? Dans les fonctions d'une variable réelle, c’est un point où la
+		dérivée s'annule. Un tel point peut etre un extremum ou encore, un point d'inflexion. Et
+		dans les fonctions de plusieurs variables réelles, des points de selle peuvent apparaitre.
+		Dans le cadre du calcul des variations mettant en jeu une fonctionnelle (1), on dit
+		qu'une fonction y(x) est un point critique de la fonctionnelle si elle est une solution de
+		l'équation d'Euler–Lagrange associée.
+	
+	
+	
+	\section{Pellicules de savon}
+	Il est question ici des surfaces minimisant leur aire sous contrainte, problème plus connu sous le nom de problème des « bulles de savon ». Après avoir étudié les propriétés de minimisation des films de savon dans une première partie, on va rechercer la route la plus courte reliant trois villes, et on considéra le problème connu sous le nom de problème de Steiner pour quatres points ou plus.
+	
+	Quelle forme prend une pellicule  élastique si elle est tendue sur un cadre ? Cette
+	question possède une réponse  évidente si le cadre a la forme d’un cercle. Tout le monde
+	sait que la peau (la pellicule « élastique ») tendue sur le pourtour d’un tambour (le cadre)
+	repose dans le plan de ce cadre. Nous n’avons guère besoin du calcul des variations pour
+	répondre à cette question. Mais qu’advient-il si le cadre n’appartient pas à un plan ?
+	La réponse est beaucoup moins  évidente ! Pourtant, un enfant a tous les outils pour y
+	répondre. Muni de cintres métalliques qu’il peut déformer à sa guise et d’eau savonneuse,
+	il peut obtenir une réponse explicite en plongeant les cintres dans la solution. Lorsqu’il
+	les en retirera, la pellicule savonneuse donnera une solution expérimentale à la question
+	que nous venons de poser.
+	
+	
+	
+		\subsection{Les trois villes et les pellicules de savon}
+		\textbf{Exemple} Suposons que nous avyons trois villes disposées sur un terrain parfaitement plat. On cherche à relier ces trois villes par la route la plus courte. Comment procéder?
+		
+		
+		\textbf{Solution}
+		Il est très simple de voir la solution de ce problème visuellement, en utilisant la propriété qu'a un film de savon de minimiser son aire. Tout ce qu’on a à faire,
+		c’est construire un modèle formé de deux plaques parallèles d’un matériau transparent,
+		reliées par trois chevilles perpendiculaires placées aux points de coordonnées A, B et
+		C, et tremper cet ensemble dans une solution de savon. Quand on sort le modèle de la
+		solution, un film relie les trois chevilles. Ce film  étant une surface minimale, il nous
+		donne exactement la forme que devrait prendre la route reliant directement les trois
+		points. 
+		
+		On peut observer deux choses. La première est qu’au point d’intersection les trois droites se rencontrent avec des angles égaux. Ce point minimise la longueur totale de la route entre les trois points et il s'appelle \textbf{point de Fermat}. 
+		
+		Comment trouver la position de ce point dans le triangle? Considerons le triqngle $ ABC$. Soit $P$ un point à l'intérieur du triangle. On considère alors l'image de $APB$ par la rotation de centre $A$ et d'angle $60^\circ$. On note $AP′C′$ l'image de $APB$ par cette rotation.
+		
+		
+		 \includegraphics[width=7cm]{ris1}
+		 
+		 Le triangle $PAP′$ est équilatéral ; en effet, par construction il est isocèle et possède un angle de $60^\circ$. Donc $PP′=AP$ et, toujours par construction, $C′P′=BP$. On a donc
+		 \[ AP+BP+CP=PP′+P′C′+CP\]
+		 Donc minimiser $AP+BP+CP$ revient à minimiser $PP′+P′C′+CP$. Or cette dernière quantité est minimale si $C′, P′, P$ et $C$ sont alignés. En effet $C$ et $C′$ (sommet « du » triangle équilatéral de côté $AB$) sont indépendants du choix de $P$. On doit donc choisir $P$ de sorte que la longueur de la ligne brisée $CPP′C$ soit minimale. Or le chemin le plus court entre $C$ et $C′$ est la ligne droite, donc il faut que $P$ appartienne à la droite $CC′$. De façon analogue on construit les points $A′, B′$. Le point de Steiner S est alors le point de concours des droites (AA′), (BB′) et (CC′).
+
+		\includegraphics[width=7cm]{ris2}
+        
+        D'où on peut trouver la position du point de Fermat simplement en dessinant un triangle équilatéral sur chaque coté du triangle formé par les trois points. On joint ensuite chaque sommet du triangle $ABC$ au sommet du triangle équilatéral qui lui est opposé. Les trois droites $AA',BB'$ et $CC'$ s'intersectent en un point $S$.
+        
+        Montrons maintenant que ces trois droites se rencontrent avec des angles égaux, c'est à dire $\frac{2\Pi}{3}$. 
+        
+        Considerons notre problème de la part du calcul variationelle. Soit le point S a les coordonnées (x,y). Alors nous devons chercher $\min_{(x,y)} F(x,y)$, où $F(x,y)=|SA|+|SB|+|SC|$. Puisque notre fonction F atteint son minimum au point (x,y), les dérivées partielles de cette fonction au point (x,y) sont égales à 0. Calculons les:
+        
+        \[|SA|=\sqrt{(x-x_A)^2+(y-y_A)^2}, |SB|=\sqrt{(x-x_B)^2+(y-y_B)^2}, |SC|=\sqrt{(x-x_C)^2+(y-y_C)^2}\]
+        Alors
+        
+        \begin{equation*}
+        \begin{cases}
+        \frac{\partial F}{\partial x}=\frac{(x-x_A)}{\sqrt{(x-x_A)^2+(y-y_A)^2}}+\frac{(x-x_B)}{\sqrt{(x-x_B)^2+(y-y_B)^2}}+\frac{(x-x_C)}{\sqrt{(x-x_C)^2+(y-y_C)^2}}=0
+        \\
+        \frac{\partial F}{\partial y}=\frac{(y-y_A)}{\sqrt{(x-x_A)^2+(y-y_A)^2}}+\frac{(y-y_B)}{\sqrt{(x-x_B)^2+(y-y_B)^2}}+\frac{(y-y_C)}{\sqrt{(x-x_C)^2+(y-y_C)^2}}=0
+        \end{cases}
+        \end{equation*}
+        
+        Notons que $\frac{(x-x_A)}{\sqrt{(x-x_A)^2+(y-y_A)^2}}=cos\gamma_A$ et $\frac{(y-y_A)}{\sqrt{(x-x_A)^2+(y-y_A)^2}}=sin \gamma_A$
+        
+        
+
+
+\end{document}
