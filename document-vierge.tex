@@ -23,7 +23,8 @@
 
 \theoremstyle{theorem}
 \newtheorem{theorem}{Théorème}
-
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Définition}
 \theoremstyle{definition}
 \newtheorem{example}{Example}
 \newtheorem*{solution*}{Solution}
@@ -84,7 +85,7 @@
 	
 	Il est montré que la ligne de la rampe la plus rapide ne sera pas une ligne droite reliant les points A et B, bien qu'elle soit la plus courte distance entre eux. Il s'est avéré que la ligne de la rampe la plus rapide est une cycloïde dont l'équation a la forme
 		 	
-	 \begin{equation*}
+	\begin{equation*}
 	 	\begin{cases}
 		 	x=a(\theta-sin\theta)
 		 	\\
@@ -97,7 +98,7 @@
  		\begin{center}
  			\includegraphics[width=6cm]{Brachistochrone}
  		\end{center}
- 	\caption{}\label{brach.figure}
+ 	\caption{Une cycloide}\label{brach.figure}
  	\end{figure}
  	
  	
@@ -114,8 +115,48 @@
 	
 	Dans cette section, nous allons mentionner les principales définitions et les théorèmes du calcul des variations qui aideront à résoudre les problèmes mentionnés ci-dessus ainsi que les problèmes avec lesquels nous travaillerons dans le futur. Il y aura également plusieurs propositions de géométrie nécessaires pour résoudre le problème Steiner pour 3 points ou plus.
 	
+	
+	D'abord nous devons décrire le chemin entre deux points selon la trajectoire. Soit il y a deux points $A=(x_1,y_1)$ et $B=(x_2,y_2)$. Supposons que $x_1 \neq x_2$ et qu'il est possible d'écrire la seconde coordonnée comme fonction de la premiére. Alors, le chemin est donné par $(x,y(x))$ pour $x \in [x_1,x_2], y(x_1)=y_1 \text{ et } y(x_2)=y_2.$ La quantité $I$ est ici la longueur du chemin entre $A$ et $B$ selon la trajectoire. Cette quantité $I(y)$ dépend évidemment de la trajectoire choisie et donc, de la fonction $y(x)$. Cette "fonction d'une fonction" est appelée une \textit{fonctionnelle} par les mathématiciens. 
+	
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics[width=9cm]{fig1}
+		\end{center}
+		\caption{Une trajectoire entre les deux points A et B}\label{chemin.figure}
+	\end{figure}
+	
+	
+	À chaque incrément $\Delta x$ le long d'une trajectoire correspond un court segment de la trajectoire dont la longueur, notée $\Delta s$, dépend de $x$. La longueur totale du chemin est donc
+	
+	\[I(y)=\sum \Delta s(x).\]
+	
+	À l'aide du théorème de Pythagore, cette longueur $\Delta s$ peut être approximée, pour $\Delta x$ suffisament petit, par $\Delta s(x)=\sqrt{(\Delta x)^2+(\Delta y)^2}$ comme l'indique la figure \ref{chemin.figure}. Ainsi, 
+	
+	\[\Delta s=\sqrt{(\Delta x)^2+(\Delta y)^2}=\sqrt{1+\big(\frac{\Delta y}{\Delta x}\big)^2}\Delta x.\]
+	
+	Si $\Delta x$ tend vers zéro, le rapport $\frac{\Delta y}{\Delta x}$ devient la dérivée $\frac{dy}{dx}$, et l'intégrale $I$,
+	
+	\begin{equation}\label{eq1}
+		I(y)=\int_{x_1}^{x_2}\sqrt{1+(y')^2}dx.
+	\end{equation}
+	
+	
+	\begin{lemma}
+		Soit un système d'axes tel que l'axe des y pointe vers le bas comme sur la figure \ref{lemma.figure}, et une courbe $y(x)$ telle que $A=(x_1,y(x_1))$ et $B=(x_2),y(x_2))$. Le temps de parcoues d'un point matériel parcourant la courbe de $A$ à $B$ sous la seule action de son poids est donné par 
+		\begin{equation}\label{eq2}
+			I(y)=\frac{1}{\sqrt{2g}}\int_{x_1}^{x_2}\frac{\sqrt{1+(y')^2}}{\sqrt{y}}dx.
+		\end{equation}
+	\end{lemma}
+	
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics[width=7cm]{fig2}
+		\end{center}
+	\caption{~}\label{lemma.figure}
+	\end{figure}
 
-	Considerons le problème fondamental du calcul des variations et considérons la théorie fondamentale qui permet de résoudre  ce problème.
+
+	Considerons maintenant le \textbf{problème fondamental du calcul des variations} et considérons la théorie fondamentale qui permet de résoudre  ce problème.
 	Etant donné une fonction $f=f(x,y,y')$, trouves les fonctions $y(x)$ qui mènent à des extrema de l'intégrale \[I=\int_{x_1}^{x_2} f(x,y,y')dx\] sous les conditions aux limites 
 	\begin{equation*}
 		\begin{cases}
@@ -151,9 +192,12 @@
 	
 			Dans certains cas, nous pourrons utiliser des formes simplifiées de l'équation d'Euler-Lagrange, qui nous permettront de trouver la solution plus rapidement et plus facilement. Un de ces «raccourcis» se nomme l'identité de Beltrami.	 
 			
-				\begin{theorem}
+				\begin{theorem}\label{thm2}
 					 Dans les cas où la fonction $f(x,y,y')$ à l'intérieur de l'intégrale \eqref{eq1} est explicitement indéoendante de x, une condition nécessaire pour que l'intégrale ait un extremum est donnée par l'identité de Beltrami, qui est une forme particulière de l'équation d'Euler-Lagrange: 
-					 \[y'\frac{\partial f}{\partial y'}-f=C\]
+					 \begin{equation}
+					 	y'\frac{\partial f}{\partial y'}-f=C.
+					 \end{equation}
+					 
 					 où C est une constante.
 				\end{theorem}
 			
@@ -168,7 +212,7 @@
 					%Weisstein, Eric W. Теорема Помпею (англ.) на сайте Wolfram MathWorld.
 				\end{theorem}
 			    	\begin{proof}
-			    		Considerons un triangle équilatéral $\Delta ABC$. Soit P un point arbitraire sur le plan. Connectons le avec tous les sommets du triangle $\Delta ABC$. Faisons tourner le triangle $\Delta APB$ de $60^\circ$ par rapport au sommet $A$ dans le sens des aiguilles d'une montre (figure \ref{ris1.figure}).
+			    		Considerons un triangle équilatéral $\Delta ABC$. Soit P un point arbitraire sur le plan. Connectons le avec tous les sommets du triangle $\Delta ABC$. Faisons tourner le triangle $\Delta APB$ de $60^\circ$ par rapport au sommet $A$ dans le sens des aiguilles d'une montre comme sur la figure \ref{ris1.figure}.
 			    		
 			    		Le sommet $B$ passe au sommet $C$, et le point $P$ passe à un certain point $P'$. On a formé un triangle $\Delta AP'C$, qui est égal au triangle $\Delta APB$. Donc $AP=AP' \implies \Delta APP'$ est un triangle équilatéral. On a $PP'=PA$ et $P'C=PB$. Selon l'inégalité du triangle 
 			    		\[PC\leq PP'+P'C=PA+PB.\]
@@ -196,7 +240,141 @@
 		    			\end{figure}
 			    		
 			   		\end{proof}
+		\subsection{Les méthodes de la plus grande pente et de Wolfe}\label{PGP}
 		
+		\textbf{Méthode de la plus grande pente a pas constant}
+			\begin{definition}
+				Soit U un convexe de $\mathbb{R}^d$. $J:U \to \mathbb{R}$ est \textbf{a-fortement convexe} ($a>0$), si  l'une des propriétes équivalents suivantes est vérifiée:
+				
+				\[\forall x,y \in U  J(y)\ge J(x)+<\nabla J(x),y-x>+\frac{a}{2}||y-x||^2\]
+				\[\Leftrightarrow \forall x,y \in U  <\nabla J(x)-\nabla J(y),x-y> \ge a ||y-x||^2\]
+				\[\Leftrightarrow \forall x \in U  D^2J \ge aI\]
+				
+			\end{definition}
+		
+			\begin{definition}
+				$J:U\to \mathbb{R}$ a un \textbf{gradient L-Lipschitz} si 
+				
+				\[\forall x,y \in U  J(y)\le J(x)+<\nabla J(x),y-x>+\frac{L}{2}||y-x||^2\]
+				\[\Leftrightarrow \forall x,y \in U ||<\nabla J(x)-\nabla J(y)|| \le L ||y-x||\]
+				\[\Leftrightarrow \forall x \in U  ||D^2J(x)|| \le L\]
+				
+			\end{definition}
+		
+			\begin{theorem}
+				
+				Soit $J:\mathbb{R}^2\to \mathbb{R}$ a-fortement convexe $(a>0)$ et a gradient L-Lipschitz. Alors la suite $(x_n)_{n\ge )}$ définie par 
+				
+				\begin{equation}
+					\begin{cases*}
+						x^\circ \text{ fixé}
+						\\
+						\forall\ge 0,  x^{n+1}=x^n-h\nabla J(x^n)
+					\end{cases*}
+				\end{equation}
+				converge linéqirement vers l'unique solution $\bar{x}$ de $inf(J)$ avec le taux $\sqrt{1-2ah+h^2L^2}$ si $h \in \left] 0,\frac{2a}{L^2}\right[.$ Le ;eiller taux est $\sqrt{1-\frac{a^2}{L^2}}$, obtenu pour $h=\frac{a}{L^2}$.
+				
+			\end{theorem}
+		
+			\textbf{Méthode de la plus grand pente à pas optimale}
+			
+			Il s'agit de défenir la suite $(x^n)_{n \ge 0}$ par la méthode itérative:
+				\begin{equation}
+					\begin{cases*}
+						x^\circ \text{ fixé}
+						\\
+						\forall\ge 0,  x^{n+1}=x^n-h^n\nabla J(x^n),
+					\end{cases*}
+				\end{equation}
+			où $h_n$ est le pas optimal, solution du problème $Min\{g_n(t):=J(x^n-t\nabla J(x^n)), t\ge 0\}$.
+			
+			\textbf{Méthode de Wolfe}
+			
+			Dans le cas général, on ne calcule pas le pas optimal $h_n$, mais on choisit un pas "suffisamment" optimal par une méthode de recherche linéaire. La méthode la plus utilisée est la méthode de Wolfe. 
+			
+			La méthode de Wolfe pour résoudre le problème de recherche lineaire $Inf\{ g_n(t)=J(x^n-t\nabla J(x^n)), t\ge 0\}$ consiste à choisir $h_n$ de la maniére suivante:
+			
+				\begin{enumerate}
+					\item On pose $t_g=0$ et $t_d=+\infty$ et on choisit $t\in \left] t_g,t_d\right[$.
+					\item On choisit deux paramétres $0<c_1<c_2<1$.
+					\item\label{point3} on a trois cas possibles:
+					\begin{itemize}
+						\item $g_n(t)\le g_n(0)+c_1tg'_n(0)$ et $g_n(t)\ge c_2g'_n(0)$. Alors $h_n=t$ convient;
+						\item $g_n(t)> g_n(0)+c_1tg'_n(0)$. Alors on pose $t_d=t$, aprés on choisit un nouveau $t\in \left]t_g,t_d\right[$ et on reprend \ref{point3};
+						\item $g_n(t)\le g_n(0)+c_1tg'_n(0)$ et $g_n(t)< c_2g'_n(0)$. Alors on pose $t_g=t$, aprés  on coisit un nouveau $t \in \left] t_g,t_d\right[$ et on reprend \ref{point3}.
+					\end{itemize}
+				\end{enumerate}
+	
+	\section{Brachistochrone}
+	
+	Fixons la théorie du calcul des variations dans la pratique et, en même temps, résolvons le problème de la brachistochrone, qui a été mentionné dans l'introduction.
+	
+	\begin{example}
+		Deux points $A$ et $B$ étant donnés dans un plan vertical, déterminer la courbe $AMB$ le long de laquelle un mobile $M$, abandonné en $A$, descend sous l'action de sa propre pesanteur et parvient à l'autre point $B$ dans le moins de temps possible.
+	\end{example}
+	\begin{solution*}
+		L'intégrale à minimiser, l'équation \ref{eq2}, est 
+		\[I(y)=\frac{1}{\sqrt{2g}}\int_{x_1}^{x_2}\frac{\sqrt{1+(y')^2}}{\sqrt{y}}dx,\]
+		
+		et la fonction $f=f(x,y,y')$ est donc
+		
+		\[f(x,y,y')=\frac{\sqrt{1+(y')^2}}{\sqrt{y}}.\]
+		
+		Puisque $x$ n'apparait pas explicitement dans l'expression de $f$, nous pouvons appliquer l'identité de Beltrami au lieu de l'équation d'Euler-Lagrange (voir le théorème \ref{thm2}). On a donc
+		
+		\[y'\frac{\partial f}{\partial y'}-f=C.\]
+		
+		Un calcul direct donne
+		
+		\[\frac{(y')^2}{\sqrt{1+(y')^2}\sqrt{y}}-\frac{\sqrt{1+(y')^2}}{\sqrt(y)}=C\]
+		\[\frac{-1}{\sqrt{1+(y')^2}\sqrt{y}}=C.\]
+		
+		En isolant $y'$, nous obtenons l'équation différentielle
+		
+		\[\frac{dy}{dx}=\sqrt{\frac{k-y}{y}},\]
+		
+		où $k$ une constante égale à $\frac{1}{C^2}.$
+		
+		La substitution trigonométrique suivante permet cependent d'intégrer l'équation:
+		
+		\[\sqrt{\frac{y}{k-y}}=tan\phi.\]
+		
+		La fonction $\phi$ est une nouvelle fonction de $x$. En isolant $y$, nous trouvons 
+		
+		\[y=ksin^2(\phi).\]
+		
+		La dérivée de la nouvelle fonction $x$ peut être calculée à l'aide de la règle de dérivation des fonctions composées:
+		
+		\[\frac{d\phi}{dx}=\frac{d\phi}{dy}\cdot\frac{dy}{dx}=\frac{1}{2k(sin\phi)(cos\phi)}\cdot\frac{1}{(tan\phi)=\frac{1}{2ksin^2\phi}}.\]
+		
+		Une méthode usuelle pour résoudre cette nouvelle équation est de la réécrire sous la forme
+		
+		\[dx=2ksin^2\phi d\phi,\]
+		
+		qui indique la relation entre les deux accroissements infinitésimeux $dx$ et $d\phi$. En trouvent les primitives des deux membres, nous obtenons
+		
+		\[x=2k\int sin^2\phi d\phi =2k\int\frac{1-cos2\phi}{2}d\phi=2k\big(\frac{\phi}{2}-\frac{sin2\phi}{4}\big)+C_1.\]
+		
+		Nous avons choisi le point initial $A$ de la trajectoire à l'origine du système de coordonnées (voir la figure \ref{lemma.figure}). Ce choix permet de fixer la constante d'intégration $C_1$. En $A$, les deux coordonéés $x$ et $y$ sont nulles. L'équation $y=ksin^2\phi$ donne, en ce point, $\phi=0$ (ou un multiple entier de $\pi$). Et dans l'expression ci-dessus pour $x, \phi=0$ donne $x=C_1$. Il faut donc poser $C_1=0$. Finalement, en posant $\frac{k}{2}=a$ et $2\phi=\theta$, on obtient 
+		
+		\begin{equation*}
+			\begin{cases}
+			x=a(\theta-sin\theta)
+			\\
+			y=a(1-cos\theta)
+			\end{cases}.
+		\end{equation*}
+		
+		Ces équations sont les équations paramétriques d'une cycloîde. Une cycloîde est une courbe engendrée par le déplacement d'un point fixé sur un cercle de rayon $a$ qui roule sans glisser sur une droite (figure \ref{cycloide.figure}).
+		
+		\begin{figure}[h]\label{cycloide.figure}
+			\begin{center}
+				\includegraphics[width=7cm]{fig3}
+			\end{center}
+		\end{figure}
+		
+		
+	\end{solution*}
 		
 	\section{Pellicules de savon}
 	Il est question ici des surfaces minimisant leur aire sous contrainte, problème plus connu sous le nom de problème des « bulles de savon ». Après avoir étudié les propriétés de minimisation des films de savon dans une première partie, on va rechercer la route la plus courte reliant trois villes, et on considéra le problème connu sous le nom de problème de Steiner pour quatres points ou plus.
@@ -213,7 +391,7 @@
 	que nous venons de poser.
 		
 	\section{Problème de Steiner}
-		\subsection{Le problème des trois villes}
+		\subsection{Le problème des trois villes}\label{troisvilles}
 		
 		\begin{example}
 			 Suposons que nous avyons trois villes disposées sur un terrain parfaitement plat. On cherche à relier ces trois villes par la route la plus courte. Comment procéder?
@@ -796,6 +974,41 @@
          				
          				
          			\end{enumerate}
+         		
+	\section{Partie numerique}
+	
+	Dans cette section, nous décrivons l'algorithme pour résoudre le problème des trois villes en utilisant Matlab, et aussi en utilisant la méthode de la plus grande pente et la méthode de Wolfe (voir la section \ref{PGP}).
+	
+	On cherche à fabriquer la route la plus courte entre les trois points $A=(x_A,y_A), B=(x_B,y_B), C=(x_C,y_C)$. Par la section \ref{troisvilles}, nous savons qu'il existe un point de Fermat $P=(x,y)$ qui relie ces points en créant le chemin le plus court.
+	Donc notre tâche consiste à trouver une solution au problème suivant:
+	\[(P) \text{       } min\{d_A+d_B+d_C\},\]
+	
+	où
+	 \[d_A=||AP||=\sqrt{(x_A-x)^2+(y_A-y)^2}\]
+	 \[d_B=||BP||=\sqrt{(x_B-x)^2+(y_B-y)^2}\]
+	 \[d_C=||CP||=\sqrt{(x_C-x)^2+(y_C-y)^2}\]
+	 
+	 Afin de résoudre ce problème de manière approchée, on le discrétise par la méthode des éléments finis. Pour $N\ge 1$ fixé, on considère l'ensemble $\mathcal{A}_N$ des fonctions $f$ affines par merceaux telles que 
+	 
+	 \[\forall n \in \{0,\dots, N\}, f \text{ affine sur } \bigg[\frac{n}{N+1},\frac{n+1}{N+1}\bigg]. \]
+	 
+	 Toute fonction $f\in \mathcal{A}_N$ est alors caractérisée par le vecteur $y \in \mathbb{R}^{N+2}$  donné par
+	 
+	 \[\forall n \in \{0,\dots, N+1\}, y_n=f\bigg(\frac{n}{N+1}\bigg).\] 
+	 
+	 qqqqqqqqqqqqqqqqqqqqqqqq
+	 
+	 Pour commencer, on va donc déclarer les variables du problème discrétisé sous Octave, et afficher les valeurs pour l'utilisateur. On définit donc $N,y_A,y_B,y_C$:
+	 
+	 \begin{center}
+	 	\includegraphics[width=13cm]{cod1}
+	 \end{center}
+	
+	On aura aussi besoin d'un vecteur initial pour la méthode de la plus grande pente, on prend l'interpolation affine entre les valeurs 
+	
+	
+	
+		
 		         
 		         
 		         
