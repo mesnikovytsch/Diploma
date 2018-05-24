@@ -7,7 +7,9 @@
 
 \usepackage[utf8]{inputenc}%       encodage du fichier source
 %\usepackage[T1]{fontenc}%          gestion des accents (pour les pdf)
-\usepackage[frenchb]{babel}%        rajouter éventuellement english, greek, etc.
+%\usepackage[T2A]{fontenc}
+\usepackage[english,frenchb]{babel}%        rajouter éventuellement english, greek, etc.
+
 %\usepackage[english]{babel}%        rajouter éventuellement english, greek, etc.
 \usepackage{textcomp}%             caractères additionnels
 \usepackage{mathtools,mathtext}
@@ -31,29 +33,39 @@
 
 
 
-\title{\textcolor{blue}{\textbf{Le calcul des variations et ses applications}}}
+\title{\textcolor{blue}{\textbf{Le calcul des variations et ses applications. \\Le problème de Steiner}}}
 \author{Mesnikovych Olena}
 
 
 
 \begin{document}
 
+
 \begin{figure}
+	\begin{minipage}[H]{0.2\linewidth}
+		\includegraphics[width=4cm]{logo_univ}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[H]{0.2\linewidth}
+		\includegraphics[width=3.3cm]{ris6}
+	\end{minipage}
 	
-	\includegraphics[width=4cm]{logo_univ}
 	
 \end{figure}
 
-
 \maketitle
 
+
+\thispagestyle{empty}
 % \begin{abstract}
 
 % \end{abstract}
 \newpage
+\thispagestyle{empty}
 \tableofcontents
 
 \newpage
+
 
 	\section{Introduction}
 	
@@ -64,10 +76,10 @@
 	Plusieurs mathématiciens exceptionnels ont contribué, pendant plusieurs siècles, à son développement. C'est toujours un sujet très vivant et en évolution. Outre son
 	l'importance mathématique et ses liens avec d'autres branches des mathématiques, telles comme la géométrie ou les équations différentielles, il est largement utilisé en physique, ingénierie, économie et biologie.
 	
-	Le calcul des variations est l'une des branches classiques des mathématiques. C'était Euler qui, en regardant le travail de Lagrange, a donné le nom actuel, pas vraiment explicite, à ce domaine des mathématiques.
+	Le calcul des variations est l'une des branches classiques des mathématiques. C'était Euler qui, en regardant le travail de Lagrange, a donné le nom actuel, pas vraiment explicite, à ce domaine des mathématiques\cite{istmath90}.
 	
-	En fait, le sujet est beaucoup plus ancien. Cela commence par l'un des problèmes les plus anciens mathématiques: l'inégalité isopérimétrique. Une variante de cette inégalité est connue comme le problème de Didon (Didon était une princesse phénicienne semi historique et plus tard une reine carthaginoise). Lorsque, fuyant Tyr, elle s’était réfugiée en Afrique du Nord, elle avait demandé une terre. Les habitants du lieu lui avaient alors donné la peau d’un bœuf, lui promettant comme domaine ce qu’elle pourrait encercler avec cette peau. Elle avait réussi à tourner cette dérision à son avantage : en découpant la peau de bœuf en lanières extrêmement fines, elle avait fabriqué une très longue corde (environ 4 km) qui lui permit de délimiter un territoire assez vaste pour y fonder la ville de Carthage, la forme de ce territoire étant un demi-cercle ayant le rivage pour diamètre (solution dans un demi-plan).
-	L'idée de former un cercle plutôt qu'un triangle, un rectangle, un carré ou tout autre forme géométrique fermée et sans point double, place Didon au pinacle desmathématiques : elle avait donc admis sans hésiter le résultat isopérimétrique ci-après que Jacques Bernoulli prouva dans le cadre du calcul des variations.
+	En fait, le sujet est beaucoup plus ancien. Cela commence par l'un des problèmes les plus anciens mathématiques: l'inégalité isopérimétrique. Une variante de cette inégalité est connue comme le problème de Didon (Didon était une princesse phénicienne semi historique et plus tard une reine carthaginoise \cite{didon}). Lorsque, fuyant Tyr, elle s’était réfugiée en Afrique du Nord, elle avait demandé une terre. Les habitants du lieu lui avaient alors donné la peau d’un bœuf, lui promettant comme domaine ce qu’elle pourrait encercler avec cette peau. Elle avait réussi à tourner cette dérision à son avantage : en découpant la peau de bœuf en lanières extrêmement fines, elle avait fabriqué une très longue corde (environ 4 km) qui lui permit de délimiter un territoire assez vaste pour y fonder la ville de Carthage, la forme de ce territoire étant un demi-cercle ayant le rivage pour diamètre (solution dans un demi-plan).
+	L'idée de former un cercle plutôt qu'un triangle, un rectangle, un carré ou tout autre forme géométrique fermée et sans point double, place Didon au pinacle des mathématiques : elle avait donc admis sans hésiter le résultat isopérimétrique ci-après que Jacques Bernoulli prouva dans le cadre du calcul des variations.
 	
 	
 	
@@ -81,9 +93,9 @@
 %	L'example suivant permet de comprendre les problèmes auxquels s'attaque le calcul des variations. Il s'agit de trouver le chemin le plus court entre deux points. En reformulant ce problème dans la language du calcul des variations, on arrive au fait que c'est une ligne droite. Mais c'était un fait bien connu avant meme l'apparition du calcul des variations et donc notre example ne convaincra personne de l'utilité du calcul des variations.
 	
 	
-	D'autres problèmes importants du calcul des variations ont été pris en compte le dix-septième siècle en Europe, comme le travail de Fermat sur géométrique optique (1662), le problème de Newton (1685) pour l'étude des corps en mouvement dans les fluides (voir aussi Huygens en 1691 sur le même problème) ou le problème de la brachistochrone formulée par Galilée en 1638. Ce dernier problème avait un très forte influence sur le développement du calcul des variations.  Au XVII siécle, Jean Bernoulli lance un concours qui occupera les plus grands esprits de l'époque. Il fait insérer le problème suivant dans \textit{Acta Editorum} de Leipzig: \textit{"Deux points $A$ et $B$ étant donnés dans un plan vertical, déterminer la courbe $AMB$ le long de laquelle un mobile $M$, abandonné en $A$, descend sous l'action de sa propre pesanteur et parvient à l'autre point $B$ dans le moins de temps possible."} Le problème prend le nom de brachistochrone, qui veut dire, traduit textuellement, \textit{"temps le plus court".} 
+	D'autres problèmes importants du calcul des variations ont été pris en compte le dix-septième siècle en Europe \cite{goldstine80}, comme le travail de Fermat sur géométrique optique (1662), le problème de Newton (1685) pour l'étude des corps en mouvement dans les fluides (voir aussi Huygens en 1691 sur le même problème) ou le problème de la brachistochrone formulée par Galilée en 1638. Ce dernier problème avait un très forte influence sur le développement du calcul des variations.  Au XVII siécle, Jean Bernoulli lance un concours qui occupera les plus grands esprits de l'époque. Il fait insérer le problème suivant dans \textit{Acta Editorum} de Leipzig: \textit{"Deux points $A$ et $B$ étant donnés dans un plan vertical, déterminer la courbe $AMB$ le long de laquelle un mobile $M$, abandonné en $A$, descend sous l'action de sa propre pesanteur et parvient à l'autre point $B$ dans le moins de temps possible."} Le problème prend le nom de brachistochrone, qui veut dire, traduit textuellement, \textit{"temps le plus court".} 
 	
-	Il est montré que la ligne de la rampe la plus rapide ne sera pas une ligne droite reliant les points A et B, bien qu'elle soit la plus courte distance entre eux. Il s'est avéré que la ligne de la rampe la plus rapide est une cycloïde dont l'équation a la forme
+	Il est montré (voir la section \ref{brachistochrone}) que la ligne de la rampe la plus rapide ne sera pas une ligne droite reliant les points A et B, bien qu'elle soit la plus courte distance entre eux. Il s'est avéré que la ligne de la rampe la plus rapide est une cycloïde dont l'équation a la forme
 		 	
 	\begin{equation*}
 	 	\begin{cases}
@@ -102,18 +114,18 @@
  	\end{figure}
  	
  	
- 	Ce probléme était résolu par John Bernoulli et presque immédiatement après aussi par James, son frère, Leibniz et Newton. Un pas décisif a été accompli avec le travail de Euler et Lagrange qui ont trouvé une manière systématique de traiter les problèmes dans ce en introduisant ce qu'on appelle maintenant l'équation d'Euler-Lagrange. 
+ 	Ce probléme était résolu par John Bernoulli et presque immédiatement après aussi par James, son frère, Leibniz et Newton. Un pas décisif a été accompli avec le travail de Euler et Lagrange qui ont trouvé une manière systématique de traiter les problèmes dans ce en introduisant ce qu'on appelle maintenant l'équation d'Euler-Lagrange (section \ref{EL}). 
  	
- 	La généralisation de la brachistochrone pourrait, en théorie, complétement révolutionner le domaine des transports. Supposons que nous puissions percer l’intérieur de la Terre pour construire un tunnel allant d’une ville $A$ à une ville $B$ à la surface de la Terre. Si on n'églige le frottement, un train d'émarrant à vitesse nulle de $A$ serait attiré vers le centre de la Terre par la gravité, accélérerait tant que le tunnel s'approcherait du centre de la Terre, puis d'écélererait quand le tunnel s'en éloignerait et, par conversion de l'énergie, ressortirait de ce tunnel en atteignant B à vitesse nulle ! Pas besoin de combustible, pas besoin de frein ! 	
+ 	La généralisation de la brachistochrone pourrait, en théorie, complétement révolutionner le domaine des transports. Supposons que nous puissions percer l’intérieur de la Terre pour construire un tunnel allant d’une ville $A$ à une ville $B$ à la surface de la Terre. Si on n'églige le frottement, un train d'émarrant à vitesse nulle de $A$ serait attiré vers le centre de la Terre par la gravité, accélérerait tant que le tunnel s'approcherait du centre de la Terre, puis d'écélererait quand le tunnel s'en éloignerait et, par conversion de l'énergie, ressortirait de ce tunnel en atteignant $B$ à vitesse nulle ! Pas besoin de combustible, pas besoin de frein ! 	
 	 
-	Ce projet révolutionnaire bute sur quelques difficultés. Si les villes sont assez  éloignées, le « meilleur tunnel » s'enfonce assez profond ément dans la Terre, et il faudra creuser dans le magma. Donc pour l'instant, malheureusement, on ne peut pas traduire cela en réalité.
+	Ce projet révolutionnaire bute sur quelques difficultés. Si les villes sont assez  éloignées, le "meilleur tunnel" s'enfonce assez profond ément dans la Terre, et il faudra creuser dans le magma. Donc pour l'instant, malheureusement, on ne peut pas traduire cela en réalité.
 	 
 	Ensuite, nous accorderons plus d'attention au problème, qui dans le monde actuel a déjà trouvé son application dans certains domaines. C'est le problème de Steiner, que nous résolvons pour des cas partiels, à savoir le problème des trois villes et le problème de Steiner pour quatre points qui se trouvent sur les sommets du carré. De plus, dans la section "Partie numérique", nous décrivons l'algorithme pour résoudre le problème de trois villes utilisant Matlab. Nous considérons également les propriétés surprenantes des bulles de savon, avec lesquelles on peut résoudre des ensembles de problèmes de calcul variationnel, y compris le problème de Steiner.
 
 	
 	\section{Partie théorique}
 	
-	Dans cette section, nous allons mentionner les principales définitions et les théorèmes du calcul des variations qui aideront à résoudre les problèmes mentionnés ci-dessus ainsi que les problèmes avec lesquels nous travaillerons dans le futur. Il y aura également plusieurs propositions de géométrie nécessaires pour résoudre le problème Steiner pour 3 points ou plus.
+	Dans cette section, nous allons mentionner les principales définitions et les théorèmes du calcul des variations qui aideront à résoudre les problèmes mentionnés ci-dessus ainsi que les problèmes avec lesquels nous travaillerons dans le futur. Il y aura également plusieurs propositions de géométrie nécessaires pour résoudre le problème Steiner pour trois points ou plus.
 	
 	
 	D'abord nous devons décrire le chemin entre deux points selon la trajectoire. Soit il y a deux points $A=(x_1,y_1)$ et $B=(x_2,y_2)$. Supposons que $x_1 \neq x_2$ et qu'il est possible d'écrire la seconde coordonnée comme fonction de la premiére. Alors, le chemin est donné par $(x,y(x))$ pour $x \in [x_1,x_2], y(x_1)=y_1 \text{ et } y(x_2)=y_2.$ La quantité $I$ est ici la longueur du chemin entre $A$ et $B$ selon la trajectoire. Cette quantité $I(y)$ dépend évidemment de la trajectoire choisie et donc, de la fonction $y(x)$. Cette "fonction d'une fonction" est appelée une \textit{fonctionnelle} par les mathématiciens. 
@@ -140,7 +152,6 @@
 		I(y)=\int_{x_1}^{x_2}\sqrt{1+(y')^2}dx.
 	\end{equation}
 	
-	
 	\begin{lemma}
 		Soit un système d'axes tel que l'axe des y pointe vers le bas comme sur la figure \ref{lemma.figure}, et une courbe $y(x)$ telle que $A=(x_1,y(x_1))$ et $B=(x_2),y(x_2))$. Le temps de parcoues d'un point matériel parcourant la courbe de $A$ à $B$ sous la seule action de son poids est donné par 
 		\begin{equation}\label{eq2}
@@ -152,7 +163,7 @@
 		\begin{center}
 			\includegraphics[width=7cm]{fig2}
 		\end{center}
-	\caption{~}\label{lemma.figure}
+	\caption[]{Trois profils possibles pour la meilleure piste de planche à roulettes}\label{lemma.figure}
 	\end{figure}
 
 
@@ -166,9 +177,9 @@
 		\end{cases}
 	\end{equation*}
 		 
-	Comment faire pour savoir quelles fonctions $y(x)$ minimisent ou maximisent l'intégrale I? C'est à cette question que répond l'équation d'Euler-Lagrange.
+	Comment faire pour savoir quelles fonctions $y(x)$ minimisent ou maximisent l'intégrale I? C'est à cette question que répond l'équation d'Euler-Lagrange \cite{euler}.
 		 
-		\subsection{L'équation d'Euler-Lagrange}
+		\subsection{L'équation d'Euler-Lagrange}\label{EL}
 			\begin{theorem}
 	  			Une condition nécessaire pour que l'intégrale
 	  			\begin{equation}\label{eq1}
@@ -190,10 +201,10 @@
 		  			 \end{equation}
 				\end{theorem}
 	
-			Dans certains cas, nous pourrons utiliser des formes simplifiées de l'équation d'Euler-Lagrange, qui nous permettront de trouver la solution plus rapidement et plus facilement. Un de ces «raccourcis» se nomme l'identité de Beltrami.	 
+			Dans certains cas, nous pourrons utiliser des formes simplifiées de l'équation d'Euler-Lagrange, qui nous permettront de trouver la solution plus rapidement et plus facilement. Un de ces "raccourcis" se nomme l'identité de Beltrami.	 
 			
 				\begin{theorem}\label{thm2}
-					 Dans les cas où la fonction $f(x,y,y')$ à l'intérieur de l'intégrale \eqref{eq1} est explicitement indéoendante de x, une condition nécessaire pour que l'intégrale ait un extremum est donnée par l'identité de Beltrami, qui est une forme particulière de l'équation d'Euler-Lagrange: 
+					 Dans les cas où la fonction $f(x,y,y')$ à l'intérieur de l'intégrale \eqref{eq1} est explicitement indépendante de x, une condition nécessaire pour que l'intégrale ait un extremum est donnée par l'identité de Beltrami, qui est une forme particulière de l'équation d'Euler-Lagrange: 
 					 \begin{equation}
 					 	y'\frac{\partial f}{\partial y'}-f=C.
 					 \end{equation}
@@ -205,7 +216,7 @@
 			
 			Comme le processus d'optimisation d'une fonction ne dependant que d'une variable réelle, l'équation d'Euler–Lagrange donne parfois plusieurs solutions, et il faut des tests supplémentaires pour savoir si celles-ci sont des minima, des maxima ou des points d'une autre nature. De plus, ces extrema pourraient etre locaux plutot que globaux. Qu'est-ce qu'un point critique ? Dans les fonctions d'une variable réelle, c’est un point où la dérivée s'annule. Un tel point peut etre un extremum ou encore, un point d'inflexion. Et dans les fonctions de plusieurs variables réelles, des points de selle peuvent apparaitre. Dans le cadre du calcul des variations mettant en jeu une fonctionnelle \eqref{eq1}, on dit qu'une fonction y(x) est un point critique de la fonctionnelle si elle est une solution de l'équation d'Euler–Lagrange associée.
 			
-			\subsection{Théorème de Pompeiu}
+			\subsection{Théorème de Pompeiu}\label{pomp}
 				\begin{theorem}
 					Si $P$ est un point dans le plan d'un triangle équilatéral $\Delta ABC$, alors les longueurs des segments de ligne $AP, BP$ et $CP$ correspondent aux côtés d'un triangle, qui est dégénéré lorsque $P$ se trouve sur le cercle circonscrit de $\Delta ABC$, c'est à dire $BP=AP+CP$.
 					
@@ -304,8 +315,9 @@
 						\item $g_n(t)\le g_n(0)+c_1tg'_n(0)$ et $g_n(t)< c_2g'_n(0)$. Alors on pose $t_g=t$, aprés  on coisit un nouveau $t \in \left] t_g,t_d\right[$ et on reprend \ref{point3}.
 					\end{itemize}
 				\end{enumerate}
+			\cite{pente}\cite{wolfe}
 	
-	\section{Brachistochrone}
+	\section{Brachistochrone}\label{brachistochrone}
 	
 	Fixons la théorie du calcul des variations dans la pratique et, en même temps, résolvons le problème de la brachistochrone, qui a été mentionné dans l'introduction.
 	
@@ -371,12 +383,13 @@
 			\begin{center}
 				\includegraphics[width=7cm]{fig3}
 			\end{center}
+		\caption{Construction d'une cycloîde}
 		\end{figure}
 		
 		
 	\end{solution*}
 		
-	\section{Pellicules de savon}
+	\section{Pellicules de savon}\label{savon}
 	Il est question ici des surfaces minimisant leur aire sous contrainte, problème plus connu sous le nom de problème des « bulles de savon ». Après avoir étudié les propriétés de minimisation des films de savon dans une première partie, on va rechercer la route la plus courte reliant trois villes, et on considéra le problème connu sous le nom de problème de Steiner pour quatres points ou plus.
 		
 	Quelle forme prend une pellicule  élastique si elle est tendue sur un cadre ? Cette
@@ -388,9 +401,26 @@
 	répondre. Muni de cintres métalliques qu’il peut déformer à sa guise et d’eau savonneuse,
 	il peut obtenir une réponse explicite en plongeant les cintres dans la solution. Lorsqu’il
 	les en retirera, la pellicule savonneuse donnera une solution expérimentale à la question
-	que nous venons de poser.
+	que nous venons de poser \cite{bois}.
+	
+	L’architecture de la dernière moitié de siècle a pu prendre de grandes libertés et
+	s’éloigner des murs horizontaux et toits plans. Plusieurs grands projets comportent des
+	surfaces qui sont non planaires, particulièrement pour les toits. Quoique les matériaux soient loin d’être élastiques et souples, ces toits semblent parfois être des pellicules
+	tendues sur un cadre de forme exotique. 
+	
+	Le calcul des variations permet de résoudre la question de la forme des pellicules élastiques si on la reformule en tenant compte du fait que la pellicule élastique décrit une surface dont l’aire est minimale. (Pour vous en convaincre, rappelez-vous que la tension d’une bande ou d’une surface élastique est d’autant moins forte qu’elle est moins étirée. Minimiser la longueur d’une bande ou l’aire d’une surface consiste à minimiser les tensions qui s’y trouvent). Ainsi, résoudre la question originale revient à minimiser l’intégrale
+	
+	\begin{equation}
+	I=\int \int_D \sqrt{1+\bigg(\frac{\partial f}{\partial x}\bigg)^2+\bigg(\frac{\partial f}{\partial y}\bigg)^2} dxdy
+	\end{equation}
+	
+	qui représente l’aire de la partie du graphe d’une fonction $f = f(x, y)$ située au-dessus
+	d’un domaine $D$ dont le pourtour est une courbe fermée $C$ (le cadre). Dans cette formulation, cette question est un problème de géométrie classique nommé le problème des
+	\textit{surfaces minimales}.
+	
+	
 		
-	\section{Problème de Steiner}
+	\section{Problème de Steiner}\label{sec5}
 		\subsection{Le problème des trois villes}\label{troisvilles}
 		
 		\begin{example}
@@ -401,31 +431,37 @@
 		\begin{solution*}
 			Il est très simple de voir la solution de ce problème visuellement, en utilisant la propriété qu'a un film de savon de minimiser son aire. Tout ce qu’on a à faire,	c’est construire un modèle formé de deux plaques parallèles d’un matériau transparent, reliées par trois chevilles perpendiculaires placées aux points de coordonnées $A$, $B$ et $C$, et tremper cet ensemble dans une solution de savon. Quand on sort le modèle de la solution, un film relie les trois chevilles. Ce film  étant une surface minimale, il nous donne exactement la forme que devrait prendre la route reliant directement les trois points. 	
 			
-			On peut observer deux choses. La première est qu’au point d’intersection les trois droites se rencontrent avec des angles égaux (120 dégres) . Ce point minimise la longueur totale de la route entre les trois points et il s'appelle \textbf{point de Fermat}.
+			On peut observer deux choses. La première est qu’au point d’intersection les trois droites se rencontrent avec des angles égaux ($120^\circ$) comme sur la figure \ref{1cas} . Ce point minimise la longueur totale de la route entre les trois points et il s'appelle \textbf{point de Fermat}.
 			
 			%\includegraphics[width=5cm]{ris3}
 			\begin{figure}[h]
-				
-			\begin{center}
-				\begin{tikzpicture}
-				\draw(0,0)--(0,1.86)--(1.2,2.38)--(0,1.86)--(-1.2,2.38);
-				\draw[fill=black] (0,0) circle (0.05cm);
-				\draw[fill=black] (0,1.86) circle (0.05cm);
-				\draw[fill=black] (1.2,2.38) circle (0.05cm);
-				\draw[fill=black] (-1.2,2.38) circle (0.05cm);
-				\node[left] at (0,0) {A};
-				\node[above]  at (0,1.95) {P};
-				\node[right] at (1.41,2.38) {B};
-				\node[left] at (-1.2,2.38) {C};
-				\draw (0,1.86) circle (0.2cm);
-				
-				\end{tikzpicture}
-			\end{center}
-			\caption{}\label{ris2.figure}
+			\begin{minipage}[h]{0.49\linewidth}
+				\begin{center}
+					\begin{tikzpicture}
+					\draw(0,0)--(0,1.86)--(1.2,2.38)--(0,1.86)--(-1.2,2.38);
+					\draw[fill=black] (0,0) circle (0.05cm);
+					\draw[fill=black] (0,1.86) circle (0.05cm);
+					\draw[fill=black] (1.2,2.38) circle (0.05cm);
+					\draw[fill=black] (-1.2,2.38) circle (0.05cm);
+					\node[left] at (0,0) {A};
+					\node[above]  at (0,1.95) {P};
+					\node[right] at (1.41,2.38) {B};
+					\node[left] at (-1.2,2.38) {C};
+					\draw (0,1.86) circle (0.2cm);
+					
+					\end{tikzpicture}
+				\end{center}
+			\end{minipage}
+			\hfill
+			\begin{minipage}[h]{0.49\linewidth}
+				\includegraphics[width=4cm]{exp4}
+			\end{minipage}
+			\caption{Premier cas}\label{ris2.figure}\label{1cas}
 			\end{figure}
 			
-			D’autre part si on choisit une configuration de points de sorte que l’angle formé par deux côtés du triangle soit supérieur à $120^\circ$, alors la solution est simplement composée par les deux côtés formant cet angle.
-			
+			D’autre part si on choisit une configuration de points de sorte que l’angle formé par deux côtés du triangle soit supérieur à $120^\circ$, alors la solution est simplement composée par les deux côtés formant cet angle comme sur la figure \ref{2cas}.
+			\begin{figure}[h]
+				
 			\begin{center}
 				\begin{tikzpicture}
 				\draw(-1.2,0.34)--(0,0)--(1.2,0.34);
@@ -439,21 +475,45 @@
 				
 				\end{tikzpicture}
 			\end{center}
+			\caption{Deuxième cas}\label{2cas}
+			\end{figure}
 			
-			\textit{Considerons le premier cas. Comment trouver la position du point de Fermat dans le triangle avec tous les angles inférieurs à 120 degrés et esct-ce que ce point existe en général?}
+			\textbf{\textit{Considerons le premier cas. Comment trouver la position du point de Fermat dans le triangle avec tous les angles inférieurs à $120^\circ$ et est-ce que ce point existe en général?}}
 			
-			Considerons le triangle $ABC$. Construisons sur le coté $BC$ un triandle équilatéral $\Delta BA'C$ et construisons un cercle décrivant ce triangle.Si le point de Fermat existe, alors il se trouve sur ce cercle, donc $P\in \check{BC}$. COnstruisons un autre triangulaire équilatéral $\Delta AB'C$ sur le coté $AC$ et le cercle. Là où les arcs se croisent, il y aura un point de Fermat. En effet, nos trianglesont tous les angles qui sont égaux à 60  dégres. L'angle $\widehat{BPC}$ est opposé au angle $\widehat{BA'C}=60^\circ$ d'un quadrilatère $BA'CP$ inscrit dans le cercle et donc $\widehat{BPC}=120^\circ$. De façon analogue $\widehat{APC}+\widehat{APB}=120^\circ$.
+			Considerons le triangle $\Delta ABC$. Construisons sur le coté $BC$ un triandle équilatéral $\Delta BA'C$ et construisons un cercle décrivant ce triangle. Si le point de Fermat existe, alors il se trouve sur ce cercle. Construisons un autre triangulaire équilatéral $\Delta AB'C$ sur le coté $AC$ et le cercle (figure \ref{exist}). Là où les arcs se croisent, il y aura un point de Fermat. En effet, nos trianglesont tous les angles qui sont égaux à 60  dégres. L'angle $\widehat{BPC}$ est opposé au angle $\widehat{BA'C}=60^\circ$ d'un quadrilatère $BA'CP$ inscrit dans le cercle et donc $\widehat{BPC}=120^\circ$. De façon analogue $\widehat{APC}=\widehat{APB}=120^\circ$.
+			
+			\begin{figure}[h]
+				\begin{center}
+					\begin{tikzpicture}
+					\draw(0,0)--(1.54,1.2)--(2.43,0.09)--cycle;
+					\draw(1.54,1.2)--(2.43,0.09)--(3.01,1.48)--cycle;
+					\draw(0,0)--(2.43,0.09)--(1.28,-1.94)--cycle;
+					\draw[color=red, fill=red] (1.51,0.76) circle (0.05cm);
+					\node[color=red, below left=0.05cm] at (1.51,0.76) {$P$};
+					\node[left] at (0,0) {$A$};
+					\node[above]  at (1.54,1.2) {$B$};
+					\node[right] at (2.43,0.09) {$C$};
+					\node[right] at (3.01,1.48) {$A'$};
+					\node[below]  at (1.28,-1.94) {$B'$};
+					\draw[dashed] (2.36,0.93) circle (0.86cm);
+					\draw[dashed] (1.26,-.58) circle (1.37cm);
+					
+					\end{tikzpicture}
+				\end{center}
+			\caption{}\label{exist}
+			\end{figure}
 			
 			Une telle construction prouve non seulement l'existence d'un point de Fermat, mais montre aussi son unité. En effet, si un tel point existe, alors il se trouve à l'intersection des arcs, mais les arcs ont, en plus des points d'untersection $A,B$, seulement un seul point.
 			
 			
-			\textit{Maintenant nous montrons que le point de Fermat nous donne une solution à notre problème.}
+			\textbf{\textit{Connaîtrons une méthode de plus pour trouver le point de Fermat.}}
 			
-			Considerons le triangle $ABC$. Soit $P$ un point à l'intérieur du triangle. On considère alors l'image de $APB$ par la rotation de centre $A$ et d'angle $60^\circ$. On note $AP'C'$ l'image de $APB$ par cette rotation.	
+			Considerons le triangle $\Delta ABC$. Soit $P$ un point à l'intérieur du triangle. On considère alors l'image de $\Delta APB$ par la rotation de centre $A$ et d'angle $60^\circ$. On note $\Delta AP'C'$ l'image de $\Delta APB$ par cette rotation (figure \ref{pointF}).	
 		
 			 %\includegraphics[width=7cm]{ris1}
 		 
-			\begin{center}
+			\begin{figure}[h]
+				\begin{center}
 			 	\begin{tikzpicture}
 			 		\draw(0,0)--(4,0)--(2.95,2)--(2.5,1)--(4,0);
 			 		\draw[fill=gray!30] (0,0)--(2.5,1)--(2.95,2)--cycle;
@@ -468,13 +528,18 @@
 			 		\draw(0.45,0.18) arc(15:52:1);
 			 		\node[above] at (0.5,0.45) {$60^\circ$};
 		 		\end{tikzpicture}
-			\end{center}
-		 	Le triangle $PAP'$ est équilatéral. En effet, par construction il est isocèle et possède un angle de $60^\circ$. Donc $PP'=AP$ et, toujours par construction, $C'P'=BP$. On a donc
+		 		\caption{}\label{pointF}
+				\end{center}
+			\end{figure}
+		
+		
+		 	Le triangle $\Delta PAP'$ est équilatéral. En effet, par construction il est isocèle et possède un angle de $60^\circ$. Donc $PP'=AP$ et, toujours par construction, $C'P'=BP$. On a donc
 		 	\[AP+BP+CP=PP'+P'C'+CP\]
-			Donc minimiser $AP+BP+CP$ revient à minimiser $PP'+P'C'+CP$. Or cette dernière quantité est minimale si $C',P',P$ et $C$ sont alignés. En effet $C$ et $C'$ (sommet du triangle équilatéral de coté $AB$) sont indépendants du choix de $P$. On doit donc choisir $P$ de sorte que la longueur de la ligne brisée $CPP'C'$ soit minimale. Or le chemin le plus court entre $C$ et $C'$ est la ligne droite, donc il faut que $P$ appartienne à la droite $CC'$. De façon analogue on construit les points $A',B'$. Le point de Fermat est alors le point de concours des droites $AA', BB'$ et $CC'$.
+			Donc minimiser $AP+BP+CP$ revient à minimiser $PP'+P'C'+CP$. Or cette dernière quantité est minimale si $C',P',P$ et $C$ sont alignés. En effet $C$ et $C'$ (sommet du triangle équilatéral de coté $AB$) sont indépendants du choix de $P$. On doit donc choisir $P$ de sorte que la longueur de la ligne brisée $CPP'C'$ soit minimale. Or le chemin le plus court entre $C$ et $C'$ est la ligne droite, donc il faut que $P$ appartienne à la droite $CC'$. De façon analogue on construit les points $A',B'$. Le point de Fermat est alors le point de concours des droites $AA', BB'$ et $CC'$ comme sur la figure \ref{poinF2}.
 
 			%\includegraphics[width=7cm]{ris2}
-        	\begin{center}
+        	\begin{figure}[h]
+        		\begin{center}
         		\begin{tikzpicture}
 	        	\draw(0,0)--(4,0)--(2.95,2)--cycle;
     	    	%\draw[fill=gray!30] (0,0)--(2.5,1)--(2.95,2)--cycle;
@@ -495,11 +560,13 @@
     	    	
         		\end{tikzpicture}
 	        \end{center}
-       		D'où on peut trouver la position du point de Fermat simplement en dessinant un triangle équilatéral sur chaque coté du triangle formé par les trois points. On joint ensuite chaque sommet du triangle $ABC$ au sommet du triangle équilatéral qui lui est opposé. Les trois droites $AA',BB'$ et $CC'$ s'intersectent en un point $P$.
+        	\caption{}\label{poinF2}
+        	\end{figure}
+       		D'où on peut trouver la position du point de Fermat simplement en dessinant un triangle équilatéral sur chaque coté du triangle formé par les trois points. On joint ensuite chaque sommet du triangle $\Delta ABC$ au sommet du triangle équilatéral qui lui est opposé. Les trois droites $AA',BB'$ et $CC'$ s'intersectent en un point $P$.
         
-       		\textit{Montrons maintenant que ces trois droites se rencontrent avec des angles égaux, c'est à dire $\frac{2\Pi}{3}$. }
+       		\textbf{\textit{Montrons maintenant que ces trois droites se rencontrent avec des angles égaux, c'est à dire $\frac{2\Pi}{3}$. }}
         
-        	Considerons notre problème de la part du calcul variationelle. Soit le point S a les coordonnées (x,y). Alors nous devons chercher $\min_{(x,y)} F(x,y)$, où $F(x,y)=|SA|+|SB|+|SC|$. Puisque notre fonction F atteint son minimum au point (x,y), les dérivées partielles de cette fonction au point (x,y) sont égales à 0. Calculons les:
+        	Considerons notre problème de la part du calcul variationelle. Soit le point $S$ a les coordonnées $(x,y)$. Alors nous devons chercher $\min_{(x,y)} F(x,y)$, où $F(x,y)=|SA|+|SB|+|SC|$. Puisque notre fonction $F$ atteint son minimum au point $(x,y)$, les dérivées partielles de cette fonction au point $(x,y)$ sont égales à 0. Calculons les:
         
         	\[|SA|=\sqrt{(x-x_A)^2+(y-y_A)^2}, |SB|=\sqrt{(x-x_B)^2+(y-y_B)^2}, |SC|=\sqrt{(x-x_C)^2+(y-y_C)^2}\]
         	Alors
@@ -545,7 +612,8 @@
 	        
 	        Donc $cos(\gamma_B-\gamma_C)=-\frac{1}{2}  \implies  \gamma_B-\gamma_C=\frac{2\Pi}{3}$.
 	        
-	        \begin{center}
+	        \begin{figure}[h]
+	        	\begin{center}
 	        	\begin{tikzpicture}
 		        	\draw[dashed](0,0)--(6,0);
 		        	\draw[dashed](0,0.5)--(6,0.5);
@@ -567,14 +635,18 @@
 		        
 	        	\end{tikzpicture}
 	        \end{center}
+        	\caption{}\label{gamma}
+	        \end{figure}
+        
 	        D'où les trois droites $PA,PB,PC$ se rencontrent au point de Fermat $P$ avec des angles égaux de $\frac{2\Pi}{3}$.
 	        
 	        
-	        \textit{Tournons-nous maintenant vers le second cas, où l'un des angles du triangle est supérieur ou égal à 120 degrés et montrons que la solution est simplement composée par les deux côtés formant cet angle.}
+	        \textbf{\textit{Tournons-nous maintenant vers le second cas (figure \ref{2cas}), où l'un des angles du triangle est supérieur ou égal à $120^\circ$ et montrons que la solution est simplement composée par les deux côtés formant cet angle.}}
 	        
-	        Soit $P$ un point arbitraire du plan. Si $P$ ne se trouve pas à l'intérieur de l'angle $A$, alors l'un des angles $\widehat{PAC}$ ou $\widehat{PAB}$ est un angle obtus. Soit c'est $\widehat{PAC}$, donc $PC>AC$. D'autre part, selon l'inégalité du triangulaire $PA+PB>AB$. D'où $PA+PB+PC>AB+AC$ et le point Fermat se trouve au sommet $A$.
+	        Soient $P$ un point arbitraire du plan est $\Delta ABC$ un triangle. Si $P$ ne se trouve pas à l'intérieur de l'angle $A$, alors l'un des angles $\widehat{PAC}$ ou $\widehat{PAB}$ est un angle obtus. Soit c'est $\widehat{PAC}$ (figure \ref{pointF3}), donc $PC>AC$. D'autre part, selon l'inégalité du triangulaire $PA+PB>AB$. D'où $PA+PB+PC>AB+AC$ et le point Fermat se trouve au sommet $A$.
 	        
-	        \begin{center}
+	        \begin{figure}[h]
+	        	\begin{center}
 	        	\begin{tikzpicture}
 	        	\draw(0,0)--(3.5,-1)--(-1,3.5)--cycle;
 	        	\node[left] at (0,0) {$A$};
@@ -587,13 +659,17 @@
 	        	
 	        	\end{tikzpicture}
 	        \end{center}
-	        Soit P se trouve à l'intérieur de l'angle A. Faisons tourner le plan de $60^\circ$. Nous trouvons que le triangle $\Delta BAD$ est à l'intérieur du quadrilatère $BPP'C'$. Le périmètre du triangle est inférieur à périmètre du quadrilatère 
+        	\caption{}\label{pointF3}
+	        \end{figure}
+        
+	        Soit $P$ se trouve à l'intérieur de l'angle $A$. Faisons tourner le plan de $60^\circ$ (figure \ref{pointF4}). Nous trouvons que le triangle $\Delta BAD$ est à l'intérieur du quadrilatère $BPP'C'$. Le périmètre du triangle est inférieur à périmètre du quadrilatère 
 	        \[AB+AC'+BC'<BP+PP'+P'C'+BC'\].
 	        Donc 
 	        
 	        \[AB+AC=AB+AC'<BP+PP'+P'C'=BP+AP+AC \implies P \text{ coincide avec } A\].
 	        
-	        \begin{center}
+	        \begin{figure}[h]
+	        	\begin{center}
 	        	\begin{tikzpicture}
 	        	\draw(0,0)--(3.5,-1)--(-1,3.5)--(0,0)--cycle;
 	        	\node[below] at (0,0) {$A$};
@@ -611,11 +687,12 @@
 	        	
 	        	\end{tikzpicture}
 	        \end{center}   
-        
+        	\caption{}\label{pointF4}
+	        \end{figure}
         \end{solution*} 
 	        
 	        
-	        En conséquence, on a appris comment relier les trois villes par la route la plus courte et dans la section "Partie numerique" on va décriver l'algorithme pour résoudre ce problème en utilisant MatLab. 
+	        En conséquence, on a appris comment relier les trois villes par la route la plus courte et dans la section \ref{partnum} on va décriver l'algorithme pour résoudre ce problème en utilisant MatLab. 
 	        
 	        Ceci se généralise aussi aisément à plus de trois points. Là aussi, on pourrait trouver la route la plus courte qui les joint en construiant un modèle qu'on plongerait dans une solution de savon. Le problème généralisé est en fait un ancien problème d'optimisation appelé \textit{problème de Steiner}.
 	        
@@ -626,19 +703,20 @@
 			Pour résoudre le problème pour quatre points qui se trouvent sur les sommets du carré, nous caractérisons d'abord le réseau de routes de la plus petite longueur pour $k$ points et dérivons un certain algorithme. Comme il s'est avéré, la solution du problème précédent de trois villes est suffisante pour sela. 
 			
 			\subsubsection{Caractéristiques du réseau de Steiner}
-			Notre réseau est un graphe constitué d'un certain nombre de sommets et d'aretes. Notons que:
+			Notre réseau est un graphe constitué d'un certain nombre de sommets et d'arêtes. Notons que:
 			
 			\begin{enumerate}
-				\item Tous lles aretes de ce graphe sont des lignes droites. Si on veut obtenir le système de points le plus court, il n'y a pas aucun sens à relier deux points de la courbe, car sa longueur est supérieure à la longueur de la droite.
+				\item Tous lles arêtes de ce graphe sont des lignes droites. Si on veut obtenir le système de points le plus court, il n'y a pas aucun sens à relier deux points de la courbe, car sa longueur est supérieure à la longueur de la droite.
 				
 				\item Il y a  un nombre fini de sommets supplémentaires. Nous les dénotons par des cercles vides.
 				
-				\item Pou deux points, il y a toujours  un chemin d'un point à un autre.
+				\item Pour deux points, il y a toujours  un chemin d'un point à un autre.
 				
-				\item Est-ce que le réseau peut etre fermé? Non, car on peut supprimer l'un des aretes et notre propriété précédente sera toujours conservéé, mais la longueur du réseau sera moindre.
+				\item Est-ce que le réseau peut être fermé? Non, car on peut supprimer l'un des aretes et notre propriété précédente sera toujours conservéé, mais la longueur du réseau sera moindre.
 				
-				\item L'angle entre deux aretes qui sortent d'un sommet est toujours supérieur ou égal à $120^\circ$. En effet, supposons que l'angle entre les aretes qui sortent du sommet $B$ soit inférieur à $120^\circ$. Considérons ensuite le triangle $\Delta ABC$ formé par ces aretes. Donc il a un point de Fermat et on peut remplacer les aretes $AB$ et $AC$ par trois aretes nouveaux $AP,BP$ et $CP$. En conséquence, la longueur totale des routes diminuera. 
-				\begin{center}
+				\item L'angle entre deux arêtes qui sortent d'un sommet est toujours supérieur ou égal à $120^\circ$. En effet, supposons que l'angle entre les arêtes qui sortent du sommet $B$ soit inférieur à $120^\circ$. Considérons ensuite le triangle $\Delta ABC$ formé par ces arêtes comme sur la figure \ref{prop5}. Donc il a un point de Fermat et on peut remplacer les arêtes $AB$ et $AC$ par trois arêtes nouveaux $AP,BP$ et $CP$. En conséquence, la longueur totale des routes diminuera. 
+				\begin{figure}[h]
+					\begin{center}
 					\begin{tikzpicture}
 					\draw[color=red](0,0)--(0,1.86)--(1.2,2.38)--(0,1.86)--(-1.2,2.38);
 					\draw(0,0)--(1.2,2.38)--(-1.2,2.38);
@@ -653,43 +731,53 @@
 					
 					\end{tikzpicture}
 				\end{center}
+				\caption{}\label{prop5}
+				\end{figure}
 			
-				\item De n'importe quel sommet sortent trois aretes maximum. Cela résulte de l'affirmation précédente.
+				\item De n'importe quel sommet sortent trois arêtes maximum. Cela résulte de l'affirmation précédente.
 				
 				\item On a des sommets de trois types:
 					\begin{itemize}
-						\item De sommet sortent trois aretes qui forment des angles de $120^\circ$;
-						\item De sommet sortent deux aretes qui forment un angle supérieur ou égal à $120^\circ$;
-						\item De sommet sort un arete.
+						\item De sommet sortent trois arêtes qui forment des angles de $120^\circ$ (figure \ref{types} $a)$);
+						\item De sommet sortent deux arêtes qui forment un angle supérieur ou égal à $120^\circ$ (figure \ref{types} $b)$);
+						\item De sommet sort un arête (figure \ref{types} $c)$).
 					\end{itemize}
 				
-				\begin{center}
-					\begin{tikzpicture}
-					\draw(-4,0)--(-4,1.86)--(-2.8,2.38)--(-4,1.86)--(-5.2,2.38);
-					\draw[fill=black] (-4,0) circle (0.05cm);
-					\draw[fill=black] (-4,1.86) circle (0.05cm);
-					\draw[fill=black] (-2.8,2.38) circle (0.05cm);
-					\draw[fill=black] (-5.2,2.38) circle (0.05cm);
-					\draw (-4,1.86) circle (0.2cm);
-					\draw(-1.5,1)--(0,2)--(1,1.5);
-					\draw[fill=black] (0,2) circle (0.05cm);
-					\draw(2.3,1.5)--(4,1.5);
-					\draw[fill=black] (2.3,1.5) circle (0.05cm);
-					
-					\end{tikzpicture}
-				\end{center}
+				\begin{figure}[ht!]				
+						\begin{center}
+							\begin{tikzpicture}
+							\draw(-4,0)--(-4,1.86)--(-2.8,2.38)--(-4,1.86)--(-5.2,2.38);
+							\node[left] at (-5.2,0) {$a)$};
+							\node[left] at (-1.5,0) {$b)$};
+							\node[left] at (2.3,0) {$c)$};
+							\draw[fill=black] (-4,0) circle (0.05cm);
+							\draw[fill=black] (-4,1.86) circle (0.05cm);
+							\draw[fill=black] (-2.8,2.38) circle (0.05cm);
+							\draw[fill=black] (-5.2,2.38) circle (0.05cm);
+							\draw (-4,1.86) circle (0.2cm);
+							\draw(-1.5,1)--(0,2)--(1,1.5);
+							\draw[fill=black] (0,2) circle (0.05cm);
+							\draw(2.3,1.5)--(4,1.5);
+							\draw[fill=black] (2.3,1.5) circle (0.05cm);
+						\end{tikzpicture}
+						\caption{$a)$ premier type; $b)$ deuxième type; $c)$troisième type}\label{types}
+						\end{center}
+										
+				\end{figure}
 			
-				\item Les sommets supplémentaires ne peuvent etre que du premier type. En effet, si de sommet supplémentaire sort seulement un arete, alors il n'y a pas de sens de son existence, car il ne fait qu'accroitre le longueur totale. 
+				\item Les sommets supplémentaires ne peuvent être que du premier type. En effet, si de sommet supplémentaire sort seulement un arête, alors il n'y a pas de sens de son existence, car il ne fait qu'accroitre le longueur totale. 
 				
-				Si deux aretes sortent du sommet supplémentaire, nous le rempaçons simplement par une ligne droite et le longueur totale diminuera.
+				Si deux arêtes sortent du sommet supplémentaire, nous le rempaçons simplement par une ligne droite et le longueur totale diminuera.
 			\end{enumerate}
 	        
 	        Ce sont les principales choses que on doit savoir pour construire un réseau de Steiner.
 	        
 	        \subsubsection{La construction de réseau}
 	        
-	        	Nous avons donc $k$ points sur un plan et nous voulons construire le plus petite réseau de routes pour eux. Sipposons qu'un réseau de Steiner a déja été construit. Nous prenons deux sommets de ce réseau, le chemin entre lesquels contient le plus grand nombre d'aretes. Nous anons indiqué ces sommets par $A$ et $B$. Nous partons du point B. Ce sommet n'est pas un sommet supplémentaire, car il est du troisième type. Considérons un sommet C qui est avant du sommet B. Il peut etre supplémentaire ou originel. (figure...)
-	        	\begin{center}
+	        	Nous avons donc $k$ points sur un plan et nous voulons construire le plus petite réseau de routes pour eux. Sipposons qu'un réseau de Steiner a déja été construit. Nous prenons deux sommets de ce réseau, le chemin entre lesquels contient le plus grand nombre d'arêtes. Nous anons indiqué ces sommets par $A$ et $B$. Nous partons du point $B$. Ce sommet n'est pas un sommet supplémentaire, car il est du troisième type. Considérons un sommet $C$ qui est avant du sommet $B$. Il peut être supplémentaire ou initial (figure \ref{point}). 
+	        	
+	        	\begin{figure}[h]
+	        		\begin{center}
 	        		\begin{tikzpicture}
 	        		\draw(-5.9,1.8)--(-4.95,1.25)--(-4.5,1.6);
 	        		\draw[fill=black] (-5.9,1.8) circle (0.05cm);
@@ -705,6 +793,8 @@
 	        		\draw[fill=black] (-2.87,0.75) circle (0.05cm);
 	        		\draw[fill=black] (-1.86,0) circle (0.05cm);
 	        		\node[left] at (-5.9,1.8) {$A$};
+	        		\node[left] at (-5.9,-0.45) {$a)$};
+	        		\node[left] at (-0.9,-0.45) {$b)$};
 	        		\node[right] at (-1.86,0) {$B$};
 	        		\node[above] at (-2.87,0.75) {$C$};
 	        		\draw(-0.9,1.8)--(0.05,1.25)--(0.95,1.6);
@@ -730,9 +820,12 @@
 	        		
 	        		\end{tikzpicture}
 	        	\end{center}
-	        	
-	        	\textbf{1-re cas} Soit le sommet $C$ est originel. Nous enlevons le sommet B avec l'arete qui en sort. 
-	        	\begin{center}
+        		\caption{$a)$ le point $C$ est initial ; $b)$ le point $C$ est supplémentaire}\label{point}
+	        	\end{figure}
+        	
+	        	\textbf{1-re cas} Soit le sommet $C$ est originel. Nous suprimons le sommet $B$ avec l'arête qui en sort (figure \ref{reseau1}). 
+	        	\begin{figure}[h]
+	        		\begin{center}
 	        		\begin{tikzpicture}
 	        		\draw(-1.9,1.8)--(-0.95,1.25)--(-0.5,1.6);
 	        		\draw[fill=black] (-1.9,1.8) circle (0.05cm);
@@ -756,12 +849,15 @@
 	        		
 	        		\end{tikzpicture}
 	        	\end{center}
+	        	\caption{}\label{reseau1}
+	        	\end{figure}
         		
-        		Mais les points qui restent sont également connectés par le réseau de Steiner. Donc si nous pouvons construire un réseau de Steiner pou $k-1$ points, alors nous pouvons le faire pour $k$ points.  Nous envolons simplement le sommet B, construissons un réseau de Steiner pour les $k-1$ points restants et puis nous retournons le sommet B. Bien sur, pendant le processus de retour, nous pouvons faire face à un problème: l'arete en sortant du sommet B forme un angle inférieur à $120^\circ$ avec l'autre arete. Dans ce cas, il n'y aura pas un grand réseau de Steiner pour $k$ points. Mais l'essentiel est que grace à cette construction nou ne manquerons pas un seul réseau. 
+        		Mais les points qui restent sont également connectés par le réseau de Steiner. Donc si nous pouvons construire un réseau de Steiner pou $k-1$ points, alors nous pouvons le faire pour $k$ points.  Nous envolons simplement le sommet $B$, construissons un réseau de Steiner pour les $k-1$ points restants et puis nous retournons le sommet $B$. Biên sur, pendant le processus de retour, nous pouvons faire face à un problème: l'arête en sortant du sommet $B$ forme un angle inférieur à $120^\circ$ avec l'autre arête. Dans ce cas, il n'y aura pas un grand réseau de Steiner pour $k$ points. Mais l'essentiel est que grace à cette construction nous ne manquerons pas un seul réseau. 
         		
-        		\textbf{2-me cas} Soit le point $C$ est un sommet supplémentaires, alors il contient trois aretes, dont l'un appartient au chemin que nous avons choisi initialement ($CN$) et deux aretes impasse ($CB$ et $CD$).
+        		\textbf{2-me cas} Soit le point $C$ est un sommet supplémentaires, alors il contient trois arêtes, dont l'un appartient au chemin que nous avons choisi initialement ($CN$) et deux arêtes impasse ($CB$ et $CD$).
         		
-        		\begin{center}
+        		\begin{figure}[h]
+        			\begin{center}
         			\begin{tikzpicture}
         			\draw(-1.9,1.8)--(-0.95,1.25)--(-0.5,1.6);
         			\draw[fill=black] (-1.9,1.8) circle (0.05cm);
@@ -793,20 +889,23 @@
         			
         			\end{tikzpicture}
         		\end{center}
+        		\caption{}\label{reseau2}
+        		\end{figure}
         		
-        		$B$ et $D$ sont les sommets originels. On ne peut plus enlever léarete $BC$ avec le sommet $B$, puisque le sommet $C$ avec deux aretes existera en vain. De plus, on ne peut pas supprimer les sommets $B$ et $D$ avec les trois aretes $BC, CD$ et $CN$. Donc on connecte les points $B$ et $D$ par un segment $BD$ et construit un triangle équilatéral $\Delta BDE$ sur lui. Puis  $\widehat{BCE}=\widehat{DCE}=60^\circ$ et les segmant $EC$ et $CN$ sont sur la meme ligne droite. Supprimons les sommets $B$ et $D$ avec les aretes $DC$ et $BC$. Tout ce qui reste plus le sommet $E$ forment aussi un réseau de Steiner. De plus, sa longueur est restée la meme par le théorème de Pompeiu (car $\widehat{BCD}=120^\circ$). D'où nous pouvons encore affirmer que si nous pouvons construire un réseau de Steiner pou $k-1$ points, alors nous pouvons le faire pour $k$ points.
+        		$B$ et $D$ sont les sommets initials. On ne peut plus enlever l'arête $BC$ avec le sommet $B$, puisque le sommet $C$ avec deux arêtes existera en vain. De plus, on ne peut pas supprimer les sommets $B$ et $D$ avec les trois arêtes $BC, CD$ et $CN$. Donc on connecte les points $B$ et $D$ par un segment $BD$ et construit un triangle équilatéral $\Delta BDE$ sur lui (figure \ref{reseau2}). Puis  $\widehat{BCE}=\widehat{DCE}=60^\circ$ et les segmant $EC$ et $CN$ sont sur la même ligne droite. Supprimons les sommets $B$ et $D$ avec les arêtes $DC$ et $BC$. Tout ce qui reste plus le sommet $E$ forment aussi un réseau de Steiner. De plus, sa longueur est restée la même par le théorème de Pompeiu (\ref{pomp} car $\widehat{BCD}=120^\circ$). D'où nous pouvons encore affirmer que si nous pouvons construire un réseau de Steiner pour $k-1$ points, alors nous pouvons le faire pour $k$ points.
         		
         		\textbf{Conclusion}
         		On a donc $k$ points sur le plan et on veut construit pour eux le plus court système de routes, c'est à dire le réseau de Steiner. Disons qu'on peut le construire pour $k-1$ points. Alors on agit de deux façons:
         		\begin{enumerate}
         			\item Choisissons un sommet arbitraire et supprimons-le. Pour les points restants, nous construisons un réseau de Steiner et puis renvoyons ce sommet et le relions à n'importe quel sommet originel d'une manière à former un angle qui est supérieur ou égal à $120^\circ$. Si ce n'est pas possible, nous utilisons la deuxième méthode.
-        			\item Supprimons une paire arbitraire de sommets. Au lieu d'eux, nous allons créer un seul sommet artificiel. Ce sera le sommet d'un triangle équilatéral, qui est construit sur un segment reliant des points isolés par nous plus tôt. En outre, il sera nécessaire de considérer deux sous-cas, car un triangle peut être construit à la fois intérieurement et extérieurement. En conséquence, nous avons obtenu $k-1$ points pour lesquels nous devons construire un réseau de Steiner. Il est nécessaire qu'un sommet artificiel soit impasse sinon cela ne fonctionnera pas.
+        			\item Supprimons une paire arbitraire de sommets. Au lieu d'eux, nous allons créer un seul sommet artificiel. Ce sera le sommet d'un triangle équilatéral, qui est construit sur un segment reliant des points isolés par nous plus tôt (figure \ref{reseau3}). En outre, il sera nécessaire de considérer deux sous-cas, car un triangle peut être construit à la fois intérieurement et extérieurement. En conséquence, nous avons obtenu $k-1$ points pour lesquels nous devons construire un réseau de Steiner. Il est nécessaire qu'un sommet artificiel soit impasse sinon cela ne fonctionnera pas.
         			
-        			Ensuite, nous décrivons le cercle autour d'un triangle équilatéral et prenons le point d'intersection du cercle avec l'arete qui relie le sommet artificiel avec un autre sommet. A ce point d'intersection, nous plaçons un sommet supplémentaire, puis nous le connectons aux sommets que nous avons supprimés au tout début, et nous supprimons le sommet artificiellement créé avec toutes les constructions auxiliaires. 
+        			Ensuite, nous décrivons le cercle autour d'un triangle équilatéral et prenons le point d'intersection du cercle avec l'arête qui relie le sommet artificiel avec un autre sommet. A ce point d'intersection, nous plaçons un sommet supplémentaire, puis nous le connectons aux sommets que nous avons supprimés au tout début, et nous supprimons le sommet artificiellement créé avec toutes les constructions auxiliaires. 
         			
         			En conséquence, nous obtenons un réseau Steiner. Si le bord ne se croise pas avec le cercle, vous devez supprimer l'autre paire de sommets.
         			
-        			\begin{center}
+        			\begin{figure}[h]
+        				\begin{center}
         				\begin{tikzpicture}
         				%\draw(-0.95,1.25)--(-0.95,0.42)--(-1.5,0.12);
         				%\draw[fill=white] (-0.95,0.42) circle (0.05cm);
@@ -871,16 +970,20 @@
         				
         				\end{tikzpicture}
         			\end{center}
-        		
+        			\caption{Le processus de construction d'un réseau Steiner.}\label{reseau3}
+        			\end{figure}
         		\end{enumerate}
+        	
+        \newpage
         \subsection{L'arbre minimal de Steiner pour les sommets d'un carré}
         	
 			Maintenant, connaissant la caractéristique de base du réseau de Steiner et les méthodes pour le construire, nous pouvons le construire pour quatre points situés sur les sommets du carré.
 		    Soit $ABCD$ est un carré.
 		        
-		    \textbf{1-re méthode} Supprimons le sommet D et construissons l'arbre de Steiner minimal pour le triangle $\Delta ABC$, nous l'avons déjà fait dans la section 3.1. Puisque l'angle $\widehat{ABC}=90^\circ$ et $AB=BC$, alors tous les angles du triangle sont inférieurs à $120^\circ$. Le réseau Steiner consistera donc en un sommet supplémentaire $P$ et trois arêtes $AP,BP,CP$. Connectons maintenant le sommet $D$ avec l'un des sommets spécifiés initialement, mais d'une manière à former un angle qui est supérieur ou égal à $120^\circ$. C'est impossible, donc utilisons deuxième méthode.
+		    \textbf{1-re méthode} Supprimons le sommet $D$ et construissons l'arbre de Steiner minimal pour le triangle $\Delta ABC$, nous l'avons déjà fait dans la section \ref{troisvilles}. Puisque l'angle $\widehat{ABC}=90^\circ$ et $AB=BC$, alors tous les angles du triangle sont inférieurs à $120^\circ$. Le réseau Steiner consistera donc en un sommet supplémentaire $P$ et trois arêtes $AP,BP,CP$ comme sur la figure \ref{carre1}. Connectons maintenant le sommet $D$ avec l'un des sommets spécifiés initialement, mais d'une manière à former un angle qui est supérieur ou égal à $120^\circ$. C'est impossible, donc utilisons deuxième méthode.
 		         
-		    	\begin{center}
+		    \begin{figure}[h]
+		    		\begin{center}
 		        	\begin{tikzpicture}
 		         	%\draw(0,0)--(0,2)--(2,2)--(2,0)--cycle;
 		         	\draw[fill=black](0,0) circle (0.05cm);
@@ -892,6 +995,8 @@
 		         	\node[left] at (0,2) {$B$};
 		         	\node[right] at (2,2) {$C$};
 		         	\node[right] at (2.1,0) {$D$};
+		         	\node[left] at (0.42,1.62) {$P$};
+		         	
 		         	\draw[dashed](0,0)--(0,2)--(2,2)--cycle;
 		         	\draw(0,0)--(0.42,1.62)--(0,2);
 		         	\draw(2,2)--(0.42,1.62);
@@ -900,13 +1005,16 @@
 		         	
 		         	\end{tikzpicture}
 	         	\end{center}
+         	\caption{}\label{carre1}
+		    \end{figure}
          	
          	\textbf{2-me méthode} Nous supprimons un couple de sommets. En vertu de la symétrie, il suffit de considerer deux cas: 
          		\begin{enumerate}
-         			\item Supprimons $A$ et $C$. Construisons un triangle équilatéral $\Delta ACE$. Les trois points $B, D$ et $E$ se trouvent sur la meme droite, donc le réseau de Steiner est constitué de deux  segments $ED$ et $DB$. $ED$ n'intersecte pas le cercle circonscrit du triangle $\Delta ACE$ et donc cette cas ne donne pas un réseau de Steiner.
-         				\begin{center}
+         			\item Supprimons $A$ et $C$. Construisons un triangle équilatéral $\Delta ACE$. Les trois points $B, D$ et $E$ se trouvent sur la meme droite (figure \ref{carre2}), donc le réseau de Steiner est constitué de deux  segments $ED$ et $DB$. $ED$ n'intersecte pas le cercle circonscrit du triangle $\Delta ACE$ et donc cette cas ne donne pas un réseau de Steiner.
+         				\begin{figure}[h]
+         					\begin{center}
          					\begin{tikzpicture}
-         					%\draw(0,0)--(0,2)--(2,2)--(2,0)--cycle;
+         					\draw[color=gray, dashed](0,0)--(0,2)--(2,2)--(2,0)--cycle;
          					\draw[fill=black](0,0) circle (0.05cm);
          					\draw[fill=black](0,2) circle (0.05cm);
          					\draw[fill=black](2,2) circle (0.05cm);
@@ -928,10 +1036,15 @@
          					
          					\end{tikzpicture}
          				\end{center}
-         			\item Supprimons $C$ et $D$. Construisons un triangle equilatéral $\Delta CDE$. On doit d'abord construire un réseau Steiner pour les points $A, E$ et $B$. Ils se trouvent sur les sommets du triangle, dont tous les angles sont inférieurs à $120^\circ$. Donc le réseau Steiner est constitué d'un sommet $P$ supplémentaire et de trois arêtes $AP,BP,EP$. L'arete intersect le cercle circonscrit du triangle $\Delta DCE$ au point $M$, ce sera donc notre deuxième sommet supplémentaire lequel on doit connecter les sommets isolés par nous plus tôt. En conséquence, nous obtenons un réseau Steiner.
-         				\begin{center}
+         			\caption{}\label{carre2}
+         				\end{figure}
+         			\item Supprimons $C$ et $D$. Construisons un triangle equilatéral $\Delta CDE$. On doit d'abord construire un réseau Steiner pour les points $A, E$ et $B$. Ils se trouvent sur les sommets du triangle (\ref{carre3} $a)$), dont tous les angles sont inférieurs à $120^\circ$. Donc le réseau Steiner est constitué d'un sommet $P$ supplémentaire et de trois arêtes $AP,BP,EP$. L'arête intersect le cercle circonscrit du triangle $\Delta DCE$ au point $M$, ce sera donc notre deuxième sommet supplémentaire lequel on doit connecter les sommets isolés par nous plus tôt. En conséquence, nous obtenons un réseau Steiner comme sur la figure \ref{carre3} $b)$.
+         			
+         				\begin{figure}[Ht]
+         					
+         					\begin{center}
          					\begin{tikzpicture}
-         					%\draw(0,0)--(0,2)--(2,2)--(2,0)--cycle;
+         					\draw[color=gray, dashed](2,0)--(0,0)--(0,2)--(2,2);
          					\draw[fill=black](0,0) circle (0.05cm);
          					\draw[fill=black](0,2) circle (0.05cm);
          					\draw[fill=black](2,2) circle (0.05cm);
@@ -940,6 +1053,8 @@
          					\draw[dashed, color=red](2,0) circle (0.3cm);
          					\draw[dashed, color=red](2,2) circle (0.3cm);
          					\node[left] at (0,0) {$A$};
+         					\node[left] at (-0.5,0) {$a)$};
+         					\node[left] at (6,0) {$b)$};
          					\node[left] at (0,2) {$B$};
          					\node[right] at (2.1,2) {$C$};
          					\node[right] at (2.1,0) {$D$};
@@ -956,6 +1071,7 @@
          					\draw[fill=white](1.53,1) circle (0.1cm);
          					\draw[fill=white](0.66,1) circle (0.05cm);
          					\draw[->] (5.2,1)--(5.8,1);
+         					\draw[color=gray, dashed](8,0)--(6,0)--(6,2)--(8,2)--cycle;
          					\draw[fill=black](6,0) circle (0.05cm);
          					\draw[fill=black](6,2) circle (0.05cm);
          					\draw[fill=black](8,2) circle (0.05cm);
@@ -971,11 +1087,53 @@
          						
          					\end{tikzpicture}
          				\end{center}
+         				\caption{}\label{carre3}
+         				\end{figure}
          				
          				
          			\end{enumerate}
+         		\subsection{Expérience}
          		
-	\section{Partie numerique}
+         		Nous savons déjà de la section \ref{savon} que les films de savons sont des surfaces s’organisant de façon à minimiser leur énergie, ce qui nécessite de minimiser leur surface,	et qui les conduit, dans certain cas, à fournir une solutiondu problème de Steiner. Cependant, la structure des films ne
+         		constitue qu’un minimum local.
+         		
+         		C'est vraiment un résultat surprenant, car il est possible de résoudre le problème en quelques secondes en utilisant de l'eau savonneuse, quand pendant la résolution de ce problème avec l'utilisation de calculs, nous passons des centaines de fois plus de temps.
+         		
+         		Considérons dans les images suivantes la solution de ce problème pour un certain nombre de points:
+         		
+         		\begin{figure}[h]
+         			\begin{minipage}[h]{0.49\linewidth}
+         				\begin{center}
+         					\includegraphics[width=4cm]{exp4}
+         				\end{center}
+         			\end{minipage}
+         			\hfill
+         			\begin{minipage}[h]{0.49\linewidth}
+         				\begin{center}
+         					\includegraphics[width=4cm]{exp5}
+         				\end{center}
+         			\end{minipage}
+         			\caption{La solution du problème pour trois et quatre points}\label{ris3.figure}
+         		\end{figure}
+         		
+         		\begin{figure}[h]
+         			\begin{center}
+         				\includegraphics[width=9cm]{exp7}
+         			\end{center}
+         		\caption{La solution du problème pour 6 points}\label{ris4.figure}
+         		\end{figure}
+         	
+         		\begin{figure}[h]
+         			\begin{center}
+         				\includegraphics[width=9cm]{exp6}
+         			\end{center}
+         		\caption{La solution du problème pour 29 points}\label{ris5.figure}
+         		\end{figure}
+         		
+         		
+         		Nous voyons dans la figure \ref{ris3.figure} les solutions aux problèmes que nous avons examinés dans la section \ref{sec5}. Dans ces cas, le réseau sera toujours le même, car pour les trois et quatre points qui se trouvent sur les sommets du carré il n'y a qu'un seul réseau Steiner. Mais comme nous le voyons sur la figure \ref{ris4.figure}, il y aura déjà trois réponses différentes pour six points. Ceci suggère qu'il existe plusieurs réseaux Steiner pour un nombre de points (à l'exception des deux exemples précédents) et qu'ils sont localement minimaux.
+         		
+	\section{Partie numerique}\label{partnum}
 	
 	Dans cette section, nous décrivons l'algorithme pour résoudre le problème des trois villes en utilisant Matlab, et aussi en utilisant la méthode de la plus grande pente et la méthode de Wolfe (voir la section \ref{PGP}).
 	
@@ -1018,9 +1176,9 @@
 	
 	
 	Parlons de l'application du problème de Steiner. Si le problème de l’arbre de Steiner minimum a repris vie de nos	jours, c’est qu’il se retrouve dans divers domaines d’application, où il
-	joue un rôle important. La résolution du problème de Steiner permet de réaliser des économies considérables dans des cas concrets : réseau routier, ferroviaire, électrique, d’aqueducs	ou d’oléoducs. Par exemple, les oléoducs dans la Toundra russe et canadienne, où le relief n'a pas d'importance, ils sont construits sur le système de réseau Steiner afin de minimiser la longueur des tuyaux. Les problèmes de trouver le réseau le plus court sont très importants aussi dans l'application à la planification de la topologie des réseaux téléphoniques et la construction de circuits électroniques intégrés (technologies VLSI).
+	joue un rôle important. La résolution du problème de Steiner permet de réaliser des économies considérables dans des cas concrets : réseau routier, ferroviaire, électrique, d’aqueducs	ou d’oléoducs \cite{brazil}. Par exemple, les oléoducs dans la Toundra russe et canadienne, où le relief n'a pas d'importance, ils sont construits sur le système de réseau Steiner afin de minimiser la longueur des tuyaux. Les problèmes de trouver le réseau le plus court sont très importants aussi dans l'application à la planification de la topologie des réseaux téléphoniques et la construction de circuits électroniques intégrés (technologies VLSI).
 	
-	Il existe également des cas d'utilisation des propriétés du réseau Steiner dans les processeurs électroniques. Afin de minimiser la longueur des fils et, en conséquence, de minimiser le temps de transit des charges électriques par le processeur. Plusieurs processeurs, à leur tour, sont également connectés par un système Steiner et ainsi de suite. Le problème de Steiner trouve également son application en biologie et en chimie pour la construction de molécules de polymères.
+	Il existe également des cas d'utilisation des propriétés du réseau Steiner dans les processeurs électroniques \cite{brazil}. Afin de minimiser la longueur des fils et, en conséquence, de minimiser le temps de transit des charges électriques par le processeur. Plusieurs processeurs, à leur tour, sont également connectés par un système Steiner et ainsi de suite. Le problème de Steiner trouve également son application en biologie et en chimie pour la construction de molécules de polymères.
 	
 	En outre, les échos de la construction de l'arbre Steiner sont visibles dans la nature. Par examples, les alvéoles des ruches d’abeilles sont héxagonales, les angles au sommet sont de 120°. Elles permettent de maximiser le volume occupable et le nombre
 	d’alvéoles tout en minimisant la matière utilisée.
@@ -1064,8 +1222,15 @@
 \addcontentsline{toc}{chaoter}{Références }  		
 \begin{thebibliography}{9}
 	\bibitem{Weinstock52} Weinstock Robert. \textit{Calculus of Variations/with applications to physics and engineering}- Toronto, McGraw-Hill Book Company, 1952.
-	\bibitem{istmath90} Petrov Yu. P. \textit{De l'histoire du calcul des variations et de la théorie des processus optimaux}//Recherches historiques et mathématiques.-Moscou, Nauka, 1990, $\No 32/33$ p. 53-73.
+%	\bibitem{istmath90}  Петров Ю.П. \textit{Из истории вариационного исчисления и теории оптимальных процессов}// Историко-математические исследования.— М.: Наука, 1990, $\No 32/33$ p. 53-73.
+%	\bibitem{bois} Бойс Ч. \textit{Мыльные пузыри}-Детиздат ЦК ВЛКСМ, 1937.
+	\bibitem{didon} \href{http://math.arizona.edu/~dido/dido-isoperimetrie-histoire.pdf}{http://math.arizona.edu/~dido/dido-isoperimetrie-histoire.pdf}.
 	\bibitem{brazil} Brazil Marcus, Zachariasen Martin. \textit{Optimal Interconnection Trees in the Plane:Theory, Algorithms and Applications}-Springer, 2015. 
+	\bibitem{goldstine80} Goldstine H.H. \textit{A history of the calculus of variations from the 17th to the	19th century}-Springer, Berlin, 1980.
+	\bibitem{euler} Weisstein, Eric W. "\href{http://mathworld.wolfram.com/Euler-LagrangeDifferentialEquation.html}{Euler-Lagrange Differential Equation}". MathWorld.
+	\bibitem{pompeiu} \href{http://mathworld.wolfram.com/PompeiusTheorem.html}{MathWorld's page on Pompeiu's Theorem}
+	\bibitem{pente} Yuan, Ya-xiang \href{ftp://lsec.cc.ac.cn/pub/yyx/papers/p0504.pdf}{\textit{"Step-sizes for the gradient method"}}, AMS/IP Studies in Advanced Mathematics. Providence, RI: American Mathematical Society
+	\bibitem{wolfe} Wolfe P. \textit{Convergence conditions for ascent methods} //Siam Review- 1969
 \end{thebibliography}    
 
 
